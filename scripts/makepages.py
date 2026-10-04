@@ -13,10 +13,10 @@ ROOT = S.ROOT
 DOCS = ROOT / "docs"
 REPO = "https://github.com/DIGlabUAB/medon"
 e = html.escape
-LOGO = ('<svg viewBox="0 0 32 32" fill="none" stroke="#2456c8" stroke-width="1.8" stroke-linecap="round">'
+LOGO = ('<svg viewBox="0 0 32 32" fill="none" stroke="#c4501a" stroke-width="1.8" stroke-linecap="round">'
         '<path d="M6 8h20M9 11h14M11.5 11v14M16 11v14M20.5 11v14M7 26h18"/></svg>')
-CSS = """:root{--bg:#fff;--soft:#f7f8fa;--fg:#16191d;--mut:#5d6570;--line:#e7e9ec;--ac:#2456c8;
---sans:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--hi:#c2462b;--mo:#c98a12;--lo:#2c8a6e}
+CSS = """:root{--bg:#fff;--soft:#f7f8fa;--fg:#16191d;--mut:#5d6570;--line:#e7e9ec;--ac:#c4501a;
+--sans:'Inter Tight',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--hi:#c2462b;--mo:#c98a12;--lo:#2c8a6e}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:var(--ac);text-decoration:none}a:hover{text-decoration:underline}
 .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
@@ -45,7 +45,7 @@ input[type=search]:focus{outline:2px solid var(--ac);outline-offset:-1px}
 .note{margin-top:40px;color:var(--mut);font-size:14px}
 @media(max-width:800px){.nl a.x{display:none}iframe{height:640px}td:nth-child(4),th:nth-child(4){display:none}}"""
 HEAD = ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-        '<title>{t}</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">'
+        '<title>{t}</title><link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">'
         '<style>' + CSS + '</style></head><body>')
 NAV = ('<nav><div class="wrap"><a class="brand" href="../index.html">' + LOGO + 'Medon</a><div class="nl">'
        '<a class="x" href="../index.html#how">How it works</a><a class="x" href="../scenarios/index.html">Examples</a><a class="x" href="../sources/index.html">Sources</a>'

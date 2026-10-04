@@ -12,9 +12,9 @@ import scenarios as sc  # noqa: E402
 from medon import engine  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-BG, INK, MUT = "#f4f0e9", "#17181a", "#6b665c"
-TIER = {"high": "#c4501a", "moderate": "#d9a21b", "low": "#2f8f7a"}
-ST = {"done": "#2f8f7a", "in progress": "#d9a21b", "open": "#c4501a"}
+BG, INK, MUT = "#ffffff", "#16191d", "#5d6570"
+TIER = {"high": "#c2462b", "moderate": "#c98a12", "low": "#2c8a6e"}
+ST = {"done": "#2c8a6e", "in progress": "#c98a12", "open": "#c2462b"}
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 9, "text.color": INK, "axes.edgecolor": MUT,
                      "axes.labelcolor": INK, "xtick.color": INK, "ytick.color": INK, "figure.facecolor": BG, "axes.facecolor": BG})
 
@@ -35,7 +35,7 @@ def main():
     ax = fig.add_axes([0.31, 0.02, 0.57, 0.62])
     for r in range(len(items)):
         for c in range(len(A)):
-            col = TIER[plans[(order[c], 2)]["tier"]] if M[r, c] else "#e4ddd0"
+            col = TIER[plans[(order[c], 2)]["tier"]] if M[r, c] else "#eef0f3"
             ax.add_patch(plt.Rectangle((c, r), 0.9, 0.86, color=col, lw=0, alpha=1 if M[r, c] else .6))
     ax.set_xlim(0, len(A)); ax.set_ylim(len(items), 0)
     ax.set_yticks([r + .43 for r in range(len(items))]); ax.set_yticklabels([f"{it['id']}  {(it['title'] if len(it['title'])<=46 else it['title'][:45].rstrip()+'...')}" for it in items], fontsize=7.5)
@@ -73,7 +73,7 @@ def main():
     qs = [q["id"] for q in data["questionnaire"]["questions"] if q["type"] != "status"]
     vals = [S["unsure"]["bump_by_question"].get(q, 0) for q in qs]
     idx = np.argsort(vals)[::-1]
-    b.barh(range(len(qs)), [vals[i] for i in idx], color="#c4501a", height=.62)
+    b.barh(range(len(qs)), [vals[i] for i in idx], color="#c2462b", height=.62)
     for k, i in enumerate(idx): b.text(vals[i] + .2, k, str(vals[i]), va="center", fontsize=8.5)
     b.set_yticks(range(len(qs))); b.set_yticklabels([qs[i] for i in idx], fontsize=8.5); b.invert_yaxis()
     b.set_xlabel("Archetypes whose tier rises (of 20)"); b.set_xlim(0, 13)

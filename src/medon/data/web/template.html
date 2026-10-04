@@ -2,8 +2,8 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Medon planner</title>
 <style>
-:root{--bg:#ffffff;--card:#ffffff;--soft:#f7f8fa;--fg:#16191d;--mut:#5d6570;--line:#e3e6ea;--cu:#2456c8;--tint:rgba(36,86,200,.07);
---low:#2c8a6e;--mod:#c98a12;--high:#c2462b;--sans:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace}
+:root{--bg:#ffffff;--card:#ffffff;--soft:#f7f8fa;--fg:#16191d;--mut:#5d6570;--line:#e3e6ea;--cu:#c4501a;--tint:rgba(196,80,26,.08);
+--low:#2c8a6e;--mod:#c98a12;--high:#c2462b;--sans:'Inter Tight',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace}
 *{box-sizing:border-box}html,body{height:100%}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
 header{background:#fff;color:var(--fg);padding:0 20px;height:54px;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--line)}
 header svg.lg{width:24px;height:24px;flex:none}header b{font-weight:600;font-size:16px;letter-spacing:-.01em}
@@ -62,13 +62,13 @@ h2{font-weight:500;font-size:clamp(22px,2.6vw,30px);font-weight:600;letter-spaci
 dialog{border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--fg);max-width:560px;width:calc(100% - 32px);padding:22px 24px}dialog::backdrop{background:rgba(16,24,40,.35)}
 dialog h4{margin:0 0 10px;font-size:20px;font-weight:600;letter-spacing:-.01em}dialog p{margin:8px 0;font-size:14px;color:var(--mut)}dialog b{color:var(--fg)}
 .note{font-size:12px;color:var(--mut);max-width:620px;margin-top:26px;border-left:2px solid var(--cu);padding-left:10px}
-.crumb,.lab,.fld span,.phase,.pill,.sum span,.refs h3,.ci .st{font-family:var(--sans);text-transform:none;letter-spacing:0;font-size:12.5px}.crumb span{font-weight:400}
+.crumb,.lab,.fld span,.phase,.pill,.sum span,.refs h3,.ci .st,.chip{font-family:var(--sans);text-transform:none;letter-spacing:0;font-size:12.5px}.crumb span{font-weight:400}
 .pt .i,.ci .id,.tile .k{font-family:var(--sans)}
 @media(max-width:900px){main{grid-template-columns:1fr;height:auto}#prof{border-left:0;border-top:1px solid var(--line)}#stage{padding:24px 18px}html,body{height:auto}.prog{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media print{header,#prof,.nav,.dl,.bar,.rs{display:none!important}main{display:block;height:auto}#stage{padding:0;overflow:visible}.ci{break-inside:avoid}.ci .bd{display:block}details:not([open])>.bd{display:block}body{background:#fff;color:#000}}
 </style></head><body>
-<header><svg class="lg" viewBox="0 0 32 32" fill="none" stroke="#2456c8" stroke-width="1.8" stroke-linecap="round"><path d="M6 8h20M9 11h14M11.5 11v14M16 11v14M20.5 11v14M7 26h18"/></svg><b>Medon</b><div class="prog"><i id="pb"></i></div><span class="pill" id="hp" data-t="low">tier: low</span><button class="rs" id="reset">Restart</button></header>
+<header><svg class="lg" viewBox="0 0 32 32" fill="none" stroke="#c4501a" stroke-width="1.8" stroke-linecap="round"><path d="M6 8h20M9 11h14M11.5 11v14M16 11v14M20.5 11v14M7 26h18"/></svg><b>Medon</b><div class="prog"><i id="pb"></i></div><span class="pill" id="hp" data-t="low">tier: low</span><button class="rs" id="reset">Restart</button></header>
 <main><section id="stage" aria-live="polite"></section>
 <aside id="prof"><div class="ph"><span class="lab">Risk profile</span><span class="lab" id="provl"></span></div>
 <div class="tierword" id="tw" data-t="low">low</div><div class="meter" id="mt"><i data-t="low"></i><i data-t="low"></i><i data-t="low"></i></div><div class="sub" id="why"></div>

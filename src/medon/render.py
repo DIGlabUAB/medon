@@ -98,7 +98,7 @@ def render_csv(plan, project=None, org=None, data=None):
     return buf.getvalue()
 
 
-CSS = """:root{--bg:#fff;--card:#fff;--fg:#16191d;--mut:#5d6570;--line:#e3e6ea;--cu:#2456c8;--lo:#2c8a6e;--mo:#c98a12;--hi:#c2462b;--done:#2c8a6e;--prog:#c98a12;--open:#c2462b}
+CSS = """:root{--bg:#fff;--card:#fff;--fg:#16191d;--mut:#5d6570;--line:#e3e6ea;--cu:#c4501a;--lo:#2c8a6e;--mo:#c98a12;--hi:#c2462b;--done:#2c8a6e;--prog:#c98a12;--open:#c2462b}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 system-ui,-apple-system,'Segoe UI',sans-serif}
 .pg{max-width:980px;margin:0 auto;padding:22px 18px 40px}.mono{font:11px ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--mut)}
 h1{font-size:22px;margin:4px 0 6px;letter-spacing:-.01em}.top{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
