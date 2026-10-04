@@ -1,0 +1,282 @@
+version: 0.1.0
+sections:
+- id: tool
+  title: About the tool
+- id: use
+  title: How and where it is used
+- id: life
+  title: How it changes over time
+- id: existing
+  title: What already exists
+questions:
+- id: function
+  why: How close the tool sits to a clinical decision. Joint Commission and CHAI ask for closer monitoring
+    as tools get closer.
+  section: tool
+  text: What does the tool do?
+  type: single
+  options:
+  - value: administrative
+    label: Administrative (scheduling, billing, coding, supply)
+  - value: operational
+    label: Operational (capacity, staffing, throughput)
+  - value: clinical_info
+    label: Clinical information (summarization, documentation, message drafting)
+  - value: clinical_support
+    label: Clinical decision support (risk prediction, triage, alerts, recommendations)
+  - value: diagnostic
+    label: Diagnostic interpretation (imaging, signals, pathology)
+  - value: treatment
+    label: Treatment selection or delivery (dosing, therapy choice, closed loop)
+- id: autonomy
+  why: How much a person checks the output before it acts.
+  section: tool
+  text: What happens to the output?
+  type: single
+  options:
+  - value: informs
+    label: It informs a person who decides
+  - value: recommends
+    label: It recommends an action and a person decides
+  - value: acts_with_review
+    label: It acts and a person reviews
+  - value: acts_without_review
+    label: It acts with no routine human review
+- id: model_type
+  why: Generative and agentic tools that produce patient level output raise the tier.
+  section: tool
+  text: What kind of model is it?
+  type: single
+  options:
+  - value: predictive
+    label: Predictive or classification model
+  - value: generative
+    label: Generative model or large language model
+  - value: agentic
+    label: Agent that takes multi step actions
+  - value: rules
+    label: Rules or scoring system
+- id: source
+  why: Third party tools add vendor validation, data terms and change notice items.
+  section: tool
+  text: Where does the tool come from?
+  type: single
+  options:
+  - value: vendor_product
+    label: Vendor product
+  - value: vendor_embedded
+    label: Vendor feature embedded in the EHR or another system
+  - value: foundation_model_api
+    label: Built by us on a third party model or API
+  - value: open_source
+    label: Open source model we adopted
+  - value: academic_transfer
+    label: Model transferred from another institution or study
+  - value: in_house
+    label: Built in house
+- id: users
+  why: Patients as direct users raise the tier and add transparency items.
+  section: use
+  text: Who uses or sees the output?
+  type: multi
+  options:
+  - value: clinicians
+    label: Physicians or advanced practice providers
+  - value: nurses
+    label: Nurses or allied health
+  - value: staff
+    label: Administrative or operations staff
+  - value: patients
+    label: Patients or families
+- id: affects_care
+  why: Whether the output can change care or access to care.
+  section: use
+  text: Can the output change a patient's care, or access to care?
+  type: single
+  options:
+  - value: 'yes'
+    label: 'Yes'
+  - value: 'no'
+    label: 'No'
+- id: patient_level
+  why: Outputs about individual patients add validation and subgroup checks.
+  section: use
+  text: Does it produce outputs about individual patients?
+  type: single
+  options:
+  - value: 'yes'
+    label: 'Yes'
+  - value: 'no'
+    label: 'No'
+- id: harm
+  why: Worst plausible harm if the output is wrong. Serious harm sets the tier to high.
+  section: use
+  text: If the output is wrong, what is the worst plausible harm?
+  type: single
+  options:
+  - value: minimal
+    label: Inconvenience or delay without clinical effect
+  - value: moderate
+    label: Care delay or avoidable care that is recoverable
+  - value: serious
+    label: Serious or irreversible harm
+- id: phi
+  why: Identifiable data adds privacy and data agreement items.
+  section: use
+  text: What patient data does it touch?
+  type: single
+  options:
+  - value: identifiable
+    label: Identifiable data (PHI)
+  - value: deidentified
+    label: De-identified data only
+  - value: none
+    label: No patient data
+- id: updates
+  why: Vendor updates and retraining add revalidation and change control items.
+  section: life
+  text: How will the model change after go live?
+  type: single
+  options:
+  - value: fixed
+    label: It stays fixed until we replace it
+  - value: vendor_updates
+    label: The vendor updates it
+  - value: local_retrain
+    label: We retrain or retune it locally
+  - value: continuous
+    label: It learns continuously
+- id: workload
+  why: Adds a workload measurement item. No source clause requires it.
+  section: life
+  text: Does it add tasks for clinicians (review alerts, edit drafts, verify outputs)?
+  type: single
+  options:
+  - value: 'yes'
+    label: 'Yes'
+  - value: 'no'
+    label: 'No'
+- id: x_owner
+  section: existing
+  type: status
+  text: A named person or role is accountable for this tool.
+- id: x_committee
+  section: existing
+  type: status
+  text: The tool was reviewed by a multidisciplinary governance group.
+- id: x_intended_use
+  section: existing
+  type: status
+  text: Intended use, users, population and out of scope uses are documented.
+- id: x_risk
+  section: existing
+  type: status
+  text: Risks and biases are identified and documented.
+- id: x_vendor_validation
+  section: existing
+  type: status
+  text: Vendor validation and bias evidence was requested and reviewed.
+- id: x_local_validation
+  section: existing
+  type: status
+  text: Performance was validated on local data with domain experts.
+- id: x_subgroup
+  section: existing
+  type: status
+  text: Performance was checked across the populations served.
+- id: x_dua
+  section: existing
+  type: status
+  text: The vendor agreement covers data use, re-identification, security and audit rights.
+- id: x_third_party
+  section: existing
+  type: status
+  text: Third party risk and a contingency for vendor failure are addressed.
+- id: x_disclosure
+  section: existing
+  type: status
+  text: Patients are told about the tool and consent is handled where relevant.
+- id: x_training
+  section: existing
+  type: status
+  text: Role specific training and access rules are defined.
+- id: x_oversight
+  section: existing
+  type: status
+  text: Human oversight and override roles are defined.
+- id: x_monitoring
+  section: existing
+  type: status
+  text: A monitoring plan names metrics, owners and frequency.
+- id: x_vendor_notice
+  section: existing
+  type: status
+  text: The vendor must notify us of model changes and we revalidate after them.
+- id: x_feedback
+  section: existing
+  type: status
+  text: Users have a channel to report problems and appeal outputs.
+- id: x_incident
+  section: existing
+  type: status
+  text: Adverse events and errors go to leadership, vendors and an incident system.
+- id: x_external
+  section: existing
+  type: status
+  text: There is a route for confidential external reporting of safety events.
+- id: x_suspend
+  section: existing
+  type: status
+  text: Criteria and a mechanism exist to suspend or deactivate the tool.
+- id: x_decommission
+  section: existing
+  type: status
+  text: A decommissioning plan exists.
+- id: x_board
+  section: existing
+  type: status
+  text: The governing board receives regular reports on AI use and outcomes.
+- id: x_workload
+  section: existing
+  type: status
+  text: Clinician workload from the tool is measured.
+- id: x_plan_review
+  section: existing
+  type: status
+  text: This governance plan is reviewed on a schedule.
+- id: x_modelcard
+  section: existing
+  type: status
+  text: A model card or equivalent fact sheet exists for this tool.
+- id: x_workflow
+  section: existing
+  type: status
+  text: Workflow fit and usability were assessed with real users.
+- id: x_fairness
+  section: existing
+  type: status
+  text: Fairness was defined and subgroups at risk were listed.
+- id: x_silent
+  section: existing
+  type: status
+  text: A silent prospective evaluation was run before go live.
+- id: x_pilot
+  section: existing
+  type: status
+  text: The tool was piloted with set success criteria before scale up.
+- id: x_override
+  section: existing
+  type: status
+  text: User overrides are recorded and reviewed.
+- id: x_auditlog
+  section: existing
+  type: status
+  text: Access is limited and audit logs are reviewed.
+- id: x_drift
+  section: existing
+  type: status
+  text: Drift is tracked with set triggers for revalidation.
+- id: x_independent
+  section: existing
+  type: status
+  text: An independent party reviewed the tool and its monitoring.

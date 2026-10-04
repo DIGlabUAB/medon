@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it.
+title: Medon
+version: 0.1.0
+date-released: 2026-10-04
+license: Apache-2.0
+authors:
+  - family-names: Powell
+    given-names: Kelly
+    affiliation: Diagnostic Intelligence Group, University of Alabama at Birmingham
+  - family-names: Burch
+    given-names: Melissa
+    affiliation: Health System Information Services, University of Alabama at Birmingham
+  - family-names: Murad
+    given-names: Danish
+    affiliation: Diagnostic Intelligence Group, University of Alabama at Birmingham
+  - family-names: Carlisle
+    given-names: Richard
+    affiliation: Health System Information Services, University of Alabama at Birmingham
+  - family-names: Webb
+    given-names: Bryan
+    affiliation: Health System Information Services, University of Alabama at Birmingham
+  - family-names: Willett
+    given-names: Benjamin
+    affiliation: Health System Information Services, University of Alabama at Birmingham
+  - family-names: Bodduluri
+    given-names: Sandeep
+    affiliation: Diagnostic Intelligence Group, University of Alabama at Birmingham

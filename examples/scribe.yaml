@@ -1,0 +1,18 @@
+project: {name: Ambient documentation assistant built on a third party LLM, clinical_lead: Example Physician, date: 2026-10-04}
+answers:
+  function: clinical_info
+  autonomy: informs
+  model_type: generative
+  source: foundation_model_api
+  users: [clinicians]
+  affects_care: "yes"
+  patient_level: "yes"
+  harm: moderate
+  phi: identifiable
+  updates: vendor_updates
+  workload: "yes"
+  x_owner: yes
+  x_committee: yes
+  x_dua: yes
+  x_disclosure: partial
+  x_training: yes

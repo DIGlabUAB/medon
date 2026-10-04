@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medon"
+version = "0.1.0"
+description = "Questionnaire driven governance plans for clinical AI projects, traced to published frameworks."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+dependencies = ["pyyaml"]
+
+[project.scripts]
+medon = "medon.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = true
+
+[tool.setuptools.package-data]
+"medon.data" = ["*.yaml"]
+"medon.data.web" = ["*.js", "*.html"]
+
+[tool.pytest.ini_options]
+python_files = "test*.py"
+testpaths = ["tests"]

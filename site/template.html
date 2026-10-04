@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Medon: governance plans for clinical AI</title>
+<meta name="description" content="Answer a structured questionnaire about a clinical AI project. Get a tiered governance plan traced to published frameworks. Open source, offline, adoptable by any health system.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23131415'/%3E%3Cpath d='M8 9h16M10 12h12M12 12v13M16 12v13M20 12v13M9 26h14' stroke='%23e4672a' stroke-width='1.6' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navbg:rgba(19,20,21,.82);--ink:#131415;--ink2:#1c1d20;--ink3:#24262a;--paper:#ddd5c8;--paper2:#e9e3d9;--paper3:#f4f0e9;--cu:#e4672a;--cu2:#c4501a;--line:rgba(221,213,200,.16);--pline:rgba(19,20,21,.14);
+--sans:'Inter Tight',ui-sans-serif,system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace}
+html[data-theme=light]{--ink:#f5f1e9;--ink2:#ebe5d9;--ink3:#e0d9cb;--paper:#17181a;--paper2:#e8e1d4;--paper3:#fbf9f4;--line:rgba(19,20,21,.16);--navbg:rgba(245,241,233,.86)}
+html[data-theme=light] .paper{background:#e3dccd;color:#17181a}html[data-theme=light] .paper .mono{color:#5a554c}
+html[data-theme=light] .sealbox>svg{filter:drop-shadow(0 24px 40px rgba(0,0,0,.25))}html[data-theme=light] .btn.p,html[data-theme=light] .av,html[data-theme=light] .step .no{color:#151515}
+html[data-theme=light] .step .no{color:var(--paper);background:var(--ink)}
+html[data-theme=light] .paper .card .mono{color:var(--cu)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--paper);font:17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:12px}
+nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:var(--navbg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.01em;text-decoration:none}
+.brand svg{width:22px;height:22px}.nl{display:flex;gap:26px;align-items:center}.nl a{text-decoration:none;opacity:.8;font-size:14px}.nl a:hover{opacity:1}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font:500 15px var(--sans);text-decoration:none;border:1px solid transparent;transition:transform .2s,background .2s}
+.btn.p{background:var(--cu);color:#151515}.btn.p:hover{background:#f07a3d;transform:translateY(-1px)}
+.btn.g{border-color:var(--line);color:var(--paper)}.btn.g:hover{background:rgba(255,255,255,.06)}
+.btn.d{background:var(--ink);color:var(--paper)}.btn.d:hover{background:#2a2c30}
+.btn.sm{padding:8px 16px;font-size:13px}
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero .arch{color:var(--paper);position:absolute;right:-40px;top:0;height:100%;width:640px;opacity:.9;pointer-events:none}
+.hero .hgrid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:30px;padding-bottom:26px}
+.eyebrow{color:var(--cu);margin-bottom:14px;display:flex;gap:12px;align-items:center}.eyebrow:before{content:"";width:34px;height:1px;background:var(--cu)}
+h1{font-weight:500;font-size:clamp(34px,4.6vw,58px);line-height:1.04;letter-spacing:-.035em;margin:0 0 16px}
+h1 em{font-style:normal;color:var(--cu)}
+.lede{font-size:17px;max-width:540px;color:var(--paper);opacity:.82;margin:0 0 22px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.sealbox{text-align:center;position:relative}.sealbox>svg{width:min(100%,430px);height:auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))}
+.sealbox .mono{opacity:.8;margin:6px 0}.sealbox .big{font-size:13px;letter-spacing:.18em;line-height:1.6;margin-top:10px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}.stats div:first-child{padding-left:0}
+.stats div{padding:14px 24px;border-right:1px solid var(--line)}.stats div:last-child{border:0}
+.stats b{display:block;font:500 30px/1 var(--sans);letter-spacing:-.03em}.stats span{opacity:.65;font-size:13px}
+/* paper sections */
+.paper{background:var(--paper);color:var(--ink)}.paper .mono{color:#5a554c}
+section{padding:64px 0;position:relative}
+.dots:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background-image:radial-gradient(circle,rgba(19,20,21,.45) 1px,transparent 1.4px);background-size:10px 1px}
+h2{font-weight:500;font-size:clamp(28px,3.6vw,44px);line-height:1.06;letter-spacing:-.03em;margin:10px 0 14px;max-width:760px}
+.sub{max-width:620px;font-size:16.5px;opacity:.8;margin:0 0 32px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--ink);color:var(--paper);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.card .t{padding:24px 26px 0}.card h3{font-weight:500;font-size:24px;letter-spacing:-.02em;margin:14px 0 10px}.card p{margin:0 0 22px;opacity:.78;font-size:15.5px}
+.card .art{margin-top:auto;border-top:1px solid var(--line);background:linear-gradient(180deg,#17181a,#101112);padding:14px;display:flex;align-items:center;justify-content:center;height:120px;position:relative}
+.card .art:before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;opacity:.5}
+.chip{position:relative;display:inline-block;padding:7px 12px;border:1px solid var(--line);border-radius:8px;font:12px var(--mono);margin:3px;background:rgba(255,255,255,.03)}
+.chip.on{border-color:var(--cu);color:var(--cu)}
+/* code panel */
+.split{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.panel{background:var(--paper3);border:1px solid var(--pline);border-radius:12px;box-shadow:0 30px 60px -30px rgba(0,0,0,.35);overflow:hidden}
+.tabs{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--pline);padding:0 18px}
+.tabs .fn{font:12px var(--mono);letter-spacing:.12em;opacity:.6;padding:14px 0}.tabs nav{all:unset;display:flex;gap:18px}
+.tab{font:12px var(--mono);letter-spacing:.1em;text-transform:uppercase;border:0;background:none;padding:14px 0;cursor:pointer;color:#6b665c;border-bottom:2px solid transparent}
+.tab[aria-selected=true]{color:var(--ink);border-color:var(--ink)}
+pre{margin:0;padding:20px 22px;overflow:auto;font:13px/1.75 var(--mono);color:#2a2b2e;max-height:430px;background:repeating-linear-gradient(transparent 0 22.75px,transparent 22.75px 22.75px)}
+pre[hidden]{display:none}.k{color:#2b44d4}.c{color:#8a8479}.v{color:#b4501a}
+/* planner */
+.dark{background:var(--ink);color:var(--paper)}.dark .sub{opacity:.72}
+.frame{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fafaf8;box-shadow:0 40px 80px -30px #000}
+.frame .bar{display:flex;align-items:center;gap:8px;background:#26282c;padding:10px 14px}.frame .bar i{width:10px;height:10px;border-radius:50%;background:#44474d}
+.frame .bar span{margin-left:12px;font:12px var(--mono);opacity:.6}
+.frame iframe{display:block;width:100%;height:620px;border:0;background:#f4f0e9}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.tier{border:1px solid var(--line);border-radius:14px;padding:26px;background:var(--ink2)}
+.tier .n{font:500 56px/1 var(--sans);letter-spacing:-.04em;color:var(--cu)}.tier h4{margin:14px 0 6px;font-weight:500;font-size:20px}.tier p{margin:0;opacity:.7;font-size:15px}
+.bars{display:flex;gap:3px;margin-top:18px;height:8px}.bars i{flex:1;background:var(--line);border-radius:2px}.bars i.f{background:var(--cu)}
+/* adopt */
+.adopt{display:grid;grid-template-columns:1fr 1fr;gap:0 70px}
+.step{position:relative;padding:0 0 38px 54px;border-left:1px dotted rgba(19,20,21,.5);margin-left:14px}
+.step:last-child{border-color:transparent}.step .no{position:absolute;left:-15px;top:-2px;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:12px var(--mono)}
+.step h3{margin:0 0 8px;font-weight:500;font-size:22px;letter-spacing:-.02em}.step p{margin:0 0 12px;opacity:.78}
+code.cmd{display:block;background:var(--ink);color:var(--paper);padding:12px 16px;border-radius:8px;font:13px var(--mono);overflow:auto}
+/* limits */
+.limits{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+.limit{padding:22px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:30px 1fr;gap:10px}.limit b{color:var(--cu);font:500 13px var(--mono);padding-top:4px}
+.limit h4{margin:0 0 4px;font-weight:500;font-size:19px}.limit p{margin:0;opacity:.72;font-size:15.5px}
+.fws{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.fw{border:1px solid var(--line);border-radius:14px;padding:26px;background:var(--ink2)}
+.fw .n{font:500 48px/1 var(--sans);letter-spacing:-.04em;color:var(--cu)}.fw h4{margin:14px 0 6px;font-weight:500;font-size:21px}.fw p{margin:0 0 10px;opacity:.7;font-size:15px}.fw a{color:var(--cu);font-size:14px}
+.road{display:flex;flex-wrap:wrap;gap:10px}.road span{border:1px dashed var(--line);border-radius:999px;padding:8px 16px;font-size:14px;opacity:.85}
+.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}.member{border:1px solid var(--line);border-radius:14px;padding:26px;background:var(--ink2)}
+.member .av{width:54px;height:54px;border-radius:50%;background:var(--cu);color:#151515;display:grid;place-items:center;font:500 18px var(--sans)}.member h4{margin:16px 0 6px;font-weight:500;font-size:20px}.member p{margin:0 0 12px;opacity:.72;font-size:15px}.member a{color:var(--cu);font-size:14px}
+.marq{overflow:hidden;border-bottom:1px solid var(--line);background:var(--ink2);padding:14px 0;white-space:nowrap}
+.mt2{display:inline-flex;gap:14px;animation:roll 38s linear infinite}.marq:hover .mt2{animation-play-state:paused}
+.wm{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font:500 14px var(--sans);letter-spacing:.02em}
+.wm i{width:8px;height:8px;border-radius:50%;background:var(--cu)}.wm.pl{opacity:.55;border-style:dashed}.wm.pl i{background:transparent;border:1px solid var(--paper)}
+@keyframes roll{to{transform:translateX(-50%)}}@media(prefers-reduced-motion:reduce){.mt2{animation:none}}
+.corner{position:absolute;width:min(34vw,330px);color:var(--paper);opacity:.5;pointer-events:none}.corner.tl{left:0;top:0}.corner.br{right:0;bottom:0;transform:rotate(180deg)}
+.tg{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--paper);cursor:pointer;display:grid;place-items:center;padding:0}.tg:hover{background:rgba(127,127,127,.15)}.tg svg{width:18px;height:18px}
+html[data-theme=light] .tg .sun{display:none}html:not([data-theme=light]) .tg .moon{display:none}
+.poster{position:relative;overflow:hidden;text-align:center;padding:64px 0 70px}.poster .arch{color:var(--paper);position:absolute;left:50%;top:0;height:100%;width:640px;transform:translateX(-50%);pointer-events:none}
+.poster .wrap{position:relative}.poster .ml{font:500 clamp(20px,2.6vw,32px)/1.5 var(--mono);text-transform:uppercase;letter-spacing:.08em}.poster .ml.s{font-size:clamp(16px,2vw,24px);opacity:.85}
+.poster .coin{width:min(70vw,320px);margin:26px auto}.poster .coin>svg{width:100%;height:auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.35))}
+footer{border-top:1px solid var(--line);padding:60px 0 80px;font-size:14px}
+footer .g{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}footer a{opacity:.8}footer pre{background:var(--ink2);color:var(--paper);border-radius:8px;font-size:12px;padding:14px;max-height:none;border:1px solid var(--line)}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s,transform .7s}.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media(max-width:900px){.hero .hgrid,.split,.adopt,.limits,footer .g{grid-template-columns:1fr}.steps,.tiers,.fws,.team{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stats div{border-bottom:1px solid var(--line)}.nl a:not(.btn){display:none}.hero .hgrid{min-height:0}.hero .arch{opacity:.5}section{padding:70px 0}}
+</style></head><body>
+<nav><div class="wrap"><a class="brand" href="#top">{{LOGO}}Medon</a>
+<div class="nl"><a href="#how">How it works</a><a href="#scenarios">Scenarios</a><a href="sources/index.html">Sources</a><a href="#planner">Planner</a><a href="#adopt">Adopt</a><a href="#frameworks">Frameworks</a><a href="#about">About</a><a href="#team">Team</a><a class="btn g sm" href="{{REPO}}">GitHub</a><button class="tg" id="tg" aria-label="Switch light or dark background" title="Light or dark"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/></svg></button></div></div></nav>
+
+<header class="hero" id="top">{{ARCH}}<div class="corner tl">{{CORNER}}</div><div class="corner br">{{CORNER}}</div>
+<div class="wrap hgrid"><div>
+<div class="eyebrow mono">DIG and HSIS, UAB &nbsp;/&nbsp; Open source &nbsp;/&nbsp; v{{VERSION}}</div>
+<h1>A governance plan for every <em>clinical AI</em> project.</h1>
+<p class="lede">Answer a structured questionnaire. Medon returns a tiered checklist with owners, evidence and the source clause behind each item. Your institution sets its own roles and review frequencies in one file.</p>
+<div class="cta"><a class="btn p" href="app/index.html">Open the planner <span>&rarr;</span></a><a class="btn g" href="{{REPO}}">View on GitHub</a></div></div>
+<div class="sealbox"><div class="mono">Controls encoded: {{N_CONTROLS}}</div><div style="width:min(54%,200px);margin:0 auto">{{COLUMN}}</div><div class="mono big">Answer once.<br>Adopt anywhere.</div></div></div>
+<div class="wrap"><div class="stats"><div><b>{{N_CONTROLS}}</b><span>source controls from {{N_FW}} published frameworks</span></div><div><b>{{N_ITEMS}}</b><span>plan items across four lifecycle phases</span></div><div><b>{{N_Q}}</b><span>questions, {{N_QA}} about the tool and {{N_QB}} about what exists</span></div><div><b>0</b><span>bytes leave your browser</span></div></div></div>
+</header>
+<div class="marq" aria-label="Frameworks"><div class="mt2">{{MARQ}}{{MARQ}}</div></div>
+
+<section class="paper dots" id="how"><div class="wrap">
+<div class="mono reveal">How it works</div><h2 class="reveal">From a project description to an accountable plan.</h2>
+<p class="sub reveal">No policy writing and no spreadsheet of clauses. The questions describe the tool. The rules decide what applies.</p>
+<div class="steps">
+<div class="card reveal"><div class="t"><span class="mono" style="color:var(--cu)">01 &nbsp;{ Answer }</span><h3>Describe the project</h3><p>What it does, how much it acts alone, where it comes from, who sees it, what patient data it touches. Then what governance already exists.</p></div>
+<div class="art"><span class="chip on">function: clinical_support</span><span class="chip">source: vendor_embedded</span><span class="chip">harm: serious</span></div></div>
+<div class="card reveal"><div class="t"><span class="mono" style="color:var(--cu)">02 &nbsp;{ Tier }</span><h3>Get a risk tier with reasons</h3><p>Low, moderate or high, with the answers that drove it. Unsure answers push the tier up and mark items to confirm.</p></div>
+<div class="art"><span class="chip">low</span><span class="chip">moderate</span><span class="chip on">high</span></div></div>
+<div class="card reveal"><div class="t"><span class="mono" style="color:var(--cu)">03 &nbsp;{ Plan }</span><h3>Receive the checklist</h3><p>Each item names the action, the evidence that proves it, the owner role and the framework clause it comes from. Print it or export it.</p></div>
+<div class="art"><span class="chip on">NIST AI RMF MANAGE 2.4</span><span class="chip">JC and CHAI Element 4</span></div></div>
+</div></div></section>
+
+<section class="paper dots" style="padding-top:0;background:var(--paper2)"><div class="wrap"><div class="split" style="padding-top:110px">
+<div><div class="mono reveal">The whole loop</div><h2 class="reveal" style="font-size:clamp(30px,4vw,48px)">Same questions. Your roles, your cadences.</h2>
+<p class="sub reveal" style="margin-bottom:28px">Your institution file sets owner roles and review frequencies. Until it is filled, each item reads "Set by local policy", so the plan always reflects your decisions.</p>
+<a class="btn d reveal" href="{{REPO}}/blob/main/docs/METHOD.md">Read the method</a></div>
+<div class="panel reveal"><div class="tabs"><span class="fn" id="fn">ANSWERS.YAML</span><nav role="tablist">
+<button class="tab" role="tab" aria-selected="true" data-t="0" data-fn="ANSWERS.YAML">Answers</button><button class="tab" role="tab" aria-selected="false" data-t="1" data-fn="PLAN.MD">Plan</button><button class="tab" role="tab" aria-selected="false" data-t="2" data-fn="INSTITUTION.YAML">Institution</button></nav></div>
+<pre id="p0">{{CODE_ANSWERS}}</pre><pre id="p1" hidden>{{CODE_PLAN}}</pre><pre id="p2" hidden>{{CODE_ORG}}</pre></div>
+</div></div></section>
+
+<section class="paper dots" id="scenarios"><div class="wrap">
+<div class="mono reveal">Scenarios</div><h2 class="reveal">See the plan for 20 kinds of projects.</h2>
+<p class="sub reveal">From a no show model to a closed loop insulin dosing system. Open any project, pick a level of existing governance and read the full report. 100 reports, all synthetic.</p>
+<div class="steps">{{SCEN}}</div>
+<p class="reveal" style="margin-top:32px"><a class="btn d" href="scenarios/index.html">Browse all 20 projects &rarr;</a> &nbsp; <a class="btn d" href="sources/index.html">Read the source controls &rarr;</a></p>
+</div></section>
+
+<section class="dark dots" id="planner" style="--pl:rgba(221,213,200,.4)"><div class="wrap">
+<div class="mono reveal" style="color:var(--cu)">Live planner</div><h2 class="reveal">Try it. Nothing leaves your browser.</h2>
+<p class="sub reveal">This is the real tool, running below. Answer a few questions and watch the plan build.</p>
+<div class="frame reveal"><div class="bar"><i></i><i></i><i></i><span>medon / app</span></div><iframe src="app/index.html" title="Medon planner" loading="lazy"></iframe></div>
+<p class="reveal" style="margin-top:18px"><a class="btn p" href="app/index.html">Open full screen <span>&rarr;</span></a></p>
+<div class="tiers">{{TIERS}}</div></div></section>
+
+<section class="paper dots" id="adopt"><div class="wrap">
+<div class="mono reveal">Adopt it</div><h2 class="reveal">Four steps to your own planner.</h2>
+<p class="sub reveal">One file carries everything local. The rest is shared and versioned, so institutions can compare plans.</p>
+<div class="adopt"><div>
+<div class="step reveal"><span class="no">1</span><h3>Install</h3><p>Python 3.9 or later.</p><code class="cmd">pip install medon</code></div>
+<div class="step reveal"><span class="no">2</span><h3>Fill the institution file</h3><p>Role titles, review frequencies by tier, links to your own policies, extra local items.</p><code class="cmd">cp org.example.yaml mysystem.yaml</code></div></div><div>
+<div class="step reveal"><span class="no">3</span><h3>Build your page</h3><p>One self contained HTML file. Host it on any internal web server.</p><code class="cmd">medon web --org mysystem.yaml -o planner.html</code></div>
+<div class="step reveal"><span class="no">4</span><h3>Extend</h3><p>Add frameworks and regulations as controls and items. A test fails if a control is never used.</p><code class="cmd">pytest</code></div></div></div></div></section>
+
+<section class="dark poster dots" id="encoded"><div class="corner tl">{{CORNER}}</div><div class="corner br">{{CORNER}}</div>{{ARCH}}<div class="wrap">
+<div class="ml reveal">Frameworks encoded: {{N_FW}}<br>Controls traced: {{N_CONTROLS}}</div>
+<div class="coin reveal">{{SEAL}}</div>
+<div class="ml s reveal">{{N_ITEMS}} plan items.<br>One plan per project.</div></div></section>
+
+<section class="dark dots" id="frameworks"><div class="wrap">
+<div class="mono reveal" style="color:var(--cu)">Frameworks</div><h2 class="reveal">{{N_FW}} frameworks built in. {{N_CONTROLS}} controls traced.</h2>
+<p class="sub reveal">Every plan item cites the framework clause behind it. Each control carries a review status, so reviewers see what has been checked against the source.</p>
+<div class="fws">{{FWS}}</div>
+<div class="mono reveal" style="margin:48px 0 14px;opacity:.6">Roadmap</div>
+<div class="road reveal">{{ROAD}}</div>
+<p class="reveal" style="margin-top:22px;opacity:.7;font-size:15px">Add a framework by writing its clauses as controls in one YAML file. <a href="{{REPO}}/blob/main/CONTRIBUTING.md" style="color:var(--cu)">See the contribution guide.</a></p>
+</div></section>
+
+<section class="paper dots" id="about"><div class="wrap"><div class="split">
+<div><div class="mono reveal">About</div><h2 class="reveal" style="font-size:clamp(30px,4vw,48px)">Built for governance leads who need a plan this week.</h2></div>
+<div class="reveal" style="font-size:18px;max-width:640px">
+<p style="margin-top:0">Health systems are asked to govern a growing set of AI tools. The guidance is published. Turning it into a project specific plan takes time that few teams have.</p>
+<p>Medon reads a short description of a clinical AI project and writes the plan: a risk tier with reasons, a checklist of actions, the evidence that proves each one, the owner role and the source clause. Existing governance is recognised, so the list shows what is done, in progress and open.</p>
+<p>Institutions set their own roles and review frequencies in one file. The planner runs offline in a single HTML page. Code is Apache 2.0. Data is CC BY 4.0. A study of 100 synthetic scenarios and the method are in the repository.</p>
+</div></div></div></section>
+
+<section class="dark dots" id="team"><div class="wrap">
+<div class="mono reveal" style="color:var(--cu)">Team</div><h2 class="reveal">Built by DIG and UAB HSIS.</h2>
+<p class="sub reveal">A partnership of the Diagnostic Intelligence Group (DIG) and Health System Information Services (HSIS) at the University of Alabama at Birmingham.</p>
+<div class="team">
+<div class="member reveal"><div class="av">SB</div><h4>Sandeep Bodduluri, PhD, MS</h4><p>Diagnostic Intelligence Group. Director of AI, CLAIR. Project lead and maintainer.</p><a href="mailto:sbodduluri@uabmc.edu">sbodduluri@uabmc.edu</a></div>
+<div class="member reveal"><div class="av">KP</div><h4>Kelly Powell, MBA</h4><p>Diagnostic Intelligence Group.</p></div>
+<div class="member reveal"><div class="av">MB</div><h4>Melissa Burch, MSHI</h4><p>UAB Health System Information Services.</p></div>
+<div class="member reveal"><div class="av">DM</div><h4>Danish Murad, MS</h4><p>Diagnostic Intelligence Group.</p></div>
+<div class="member reveal"><div class="av">RC</div><h4>Richard Carlisle, MS</h4><p>UAB Health System Information Services.</p></div>
+<div class="member reveal"><div class="av">BW</div><h4>Bryan Webb, BS</h4><p>UAB Health System Information Services.</p></div>
+<div class="member reveal"><div class="av">BW</div><h4>Benjamin Willett, PhD</h4><p>UAB Health System Information Services.</p></div>
+<div class="member reveal"><div class="av">+</div><h4>Framework reviewers</h4><p>Clinicians and governance leads who check each control against its source. Open seats.</p><a href="{{REPO}}/blob/main/CONTRIBUTING.md">Join as reviewer</a></div>
+<div class="member reveal"><div class="av">+</div><h4>Health system partners</h4><p>Institutions that adopt the planner and share their institution file.</p><a href="{{REPO}}/issues">Open an issue</a></div>
+</div></div></section>
+
+<footer><div class="wrap g">
+<div><a class="brand" href="#top">{{LOGO}}Medon</a><p style="opacity:.7;max-width:320px">Questionnaire driven governance plans for clinical AI. Code under Apache 2.0. Data under CC BY 4.0. A planning aid that supports, and does not replace, your governance committee and counsel.</p></div>
+<div><div class="mono" style="margin-bottom:12px;opacity:.6">Links</div><a href="{{REPO}}">Repository</a><br><a href="{{REPO}}/blob/main/docs/METHOD.md">Method</a><br><a href="{{REPO}}/blob/main/CONTRIBUTING.md">Contribute</a><br><a href="app/index.html">Planner</a><br><a href="scenarios/index.html">Scenarios</a><br><a href="sources/index.html">Sources</a></div>
+<div><div class="mono" style="margin-bottom:12px;opacity:.6">Cite</div><pre>Powell K, Burch M, Murad D, Carlisle R, Webb B, Willett B, Bodduluri S. Medon (v{{VERSION}}).
+DIG and HSIS, University of Alabama
+at Birmingham. 2026.</pre></div></div></footer>
+<script>
+(function(){var r=document.documentElement,k='gp-theme';function g(){try{var v=localStorage.getItem(k);if(v)return v}catch(e){}return window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}
+function set(v){r.setAttribute('data-theme',v);try{localStorage.setItem(k,v)}catch(e){}document.querySelectorAll('iframe').forEach(function(f){try{f.contentWindow.postMessage({medonTheme:v},'*')}catch(e){}})}
+r.setAttribute('data-theme',g());document.getElementById('tg').onclick=function(){set(r.getAttribute('data-theme')==='light'?'dark':'light')};
+document.querySelectorAll('iframe').forEach(function(f){f.addEventListener('load',function(){try{f.contentWindow.postMessage({medonTheme:r.getAttribute('data-theme')},'*')}catch(e){}})});})();
+document.querySelectorAll('.tab').forEach(function(b){b.addEventListener('click',function(){
+document.querySelectorAll('.tab').forEach(function(x){x.setAttribute('aria-selected','false')});b.setAttribute('aria-selected','true');
+[0,1,2].forEach(function(i){document.getElementById('p'+i).hidden=(String(i)!==b.dataset.t)});document.getElementById('fn').textContent=b.dataset.fn;});});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(e){io.observe(e)});
+</script></body></html>

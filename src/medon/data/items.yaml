@@ -1,0 +1,689 @@
+phases:
+- id: govern
+  title: Governance and accountability
+- id: predeploy
+  title: Before deployment
+- id: operate
+  title: After go live
+- id: retire
+  title: Change and retirement
+items:
+- id: G01
+  phase: govern
+  title: Name an accountable owner for the tool
+  action: Assign one named role as accountable for the tool across its life. Document who decides on risk
+    and who runs day to day oversight.
+  evidence: Owner named in the AI inventory entry.
+  owner: governance_lead
+  sources:
+  - N03
+  - N04
+  - J01
+  - J09
+  - E07
+  - W04
+  - I01
+  - I02
+  - R18
+  - R21
+  - R22
+  min_tier: low
+  status_q: x_owner
+- id: G02
+  phase: govern
+  title: Review the tool in a multidisciplinary governance group
+  action: Present the tool to a group that spans clinical, safety, IT, privacy, compliance and executive
+    roles. Record the decision and conditions.
+  evidence: Committee minutes or approval record.
+  owner: governance_lead
+  sources:
+  - J01
+  - J02
+  - N03
+  - I01
+  - R07
+  - R14
+  - R21
+  - A13
+  min_tier: low
+  status_q: x_committee
+- id: G03
+  phase: govern
+  title: Report use, outcomes and adverse events to the governing board
+  action: Include the tool in the regular board report on AI use, outcomes and adverse events.
+  evidence: Board report that lists the tool.
+  owner: governance_lead
+  sources:
+  - J02
+  min_tier: moderate
+  status_q: x_board
+  cadence: board_report
+- id: P01
+  phase: predeploy
+  title: Document intended use and limits
+  action: Write the intended use, intended users, target population and out of scope uses. State the performance
+    the tool is meant to deliver in this setting.
+  evidence: Intended use statement or model card on file.
+  owner: clinical_owner
+  sources:
+  - N10
+  - N11
+  - J10
+  - E04
+  - H01
+  - W03
+  - R01
+  - R05
+  - R12
+  - M02
+  min_tier: low
+  status_q: x_intended_use
+- id: P02
+  phase: predeploy
+  title: Identify and document risks and biases
+  action: List prospective risks and biases with emphasis on safety and access. Record the mitigations
+    and the residual risk accepted.
+  evidence: Risk register entry.
+  owner: quality_safety_lead
+  sources:
+  - J10
+  - N10
+  - E01
+  - H02
+  - I03
+  - R03
+  - R07
+  - R10
+  - M03
+  min_tier: low
+  status_q: x_risk
+- id: P03
+  phase: predeploy
+  title: Obtain and review vendor validation evidence
+  action: Ask the vendor how the tool was validated and tested. Ask whether the vendor will tune or validate
+    on a sample that represents your patients. Ask how bias was evaluated.
+  evidence: Completed vendor questionnaire and reviewer notes.
+  owner: vendor_manager
+  applies:
+    d: third_party
+  sources:
+  - J04
+  - E04
+  - H01
+  - R04
+  - A05
+  - M05
+  min_tier: low
+  status_q: x_vendor_validation
+- id: P04
+  phase: predeploy
+  title: Validate performance on local data with domain experts
+  action: Test the tool in the deployment context with clinical domain experts. Tune or test on local
+    data. Record measured performance against intended use.
+  evidence: Local validation report.
+  owner: clinical_owner
+  applies:
+    any:
+    - q: affects_care
+      eq: 'yes'
+    - q: patient_level
+      eq: 'yes'
+    - q: harm
+      in:
+      - moderate
+      - serious
+  sources:
+  - N11
+  - J11
+  - E06
+  - W02
+  - I04
+  - R08
+  - R16
+  - R17
+  - A01
+  - M06
+  - M08
+  min_tier: moderate
+  status_q: x_local_validation
+- id: P05
+  phase: predeploy
+  title: Check performance across the populations served
+  action: Confirm that testing covers the populations you serve. Report performance by relevant subgroups
+    before go live.
+  evidence: Subgroup performance table.
+  owner: quality_safety_lead
+  applies:
+    any:
+    - q: patient_level
+      eq: 'yes'
+    - q: affects_care
+      eq: 'yes'
+  sources:
+  - N09
+  - J11
+  - E02
+  - W05
+  - I03
+  - R16
+  - A02
+  - A04
+  - M07
+  min_tier: moderate
+  status_q: x_subgroup
+- id: P06
+  phase: predeploy
+  title: Set data terms in the vendor agreement
+  action: Define permitted data uses. Prohibit re-identification. Require security compliance. Reserve
+    audit rights with penalties.
+  evidence: Executed agreement with the listed terms.
+  owner: privacy_officer
+  applies:
+    all:
+    - d: third_party
+    - q: phi
+      in:
+      - identifiable
+      - deidentified
+  sources:
+  - J03
+  - E02
+  - H04
+  - I05
+  - R15
+  - A03
+  min_tier: low
+  status_q: x_dua
+- id: P07
+  phase: predeploy
+  title: Address third party risk and plan for vendor failure
+  action: Apply your third party AI risk policy. Write a contingency for failure or incident in the vendor
+    tool, model or data. Document the risk controls applied.
+  evidence: Third party risk assessment and contingency note.
+  owner: vendor_manager
+  applies:
+    d: third_party
+  sources:
+  - N06
+  - N14
+  - I08
+  - R04
+  - R06
+  - A05
+  min_tier: low
+  status_q: x_third_party
+- id: P08
+  phase: predeploy
+  title: Protect patient data and set patient transparency
+  action: Protect patient data from unauthorized use or release. Where the tool directly affects care,
+    notify patients and families, explain how their data are used, and obtain consent where relevant.
+    Address transparency for staff.
+  evidence: Disclosure text, consent workflow and privacy review.
+  owner: privacy_officer
+  applies:
+    any:
+    - d: patient_facing
+    - q: affects_care
+      eq: 'yes'
+    - d: uses_phi
+  sources:
+  - J13
+  - H04
+  - W01
+  - W03
+  - I06
+  - R06
+  - R15
+  - A10
+  - M09
+  min_tier: low
+  status_q: x_disclosure
+- id: P09
+  phase: predeploy
+  title: Define who may use the tool and train them
+  action: Define which roles may use the tool. Decide whether training is needed before rollout and whether
+    it must recur. Provide role specific documentation.
+  evidence: Access rules and training record.
+  owner: training_lead
+  applies:
+    q: users
+    has_any:
+    - clinicians
+    - nurses
+    - staff
+  sources:
+  - J12
+  - E08
+  - I06
+  - I07
+  - R02
+  - R18
+  - R21
+  - A13
+  min_tier: low
+  status_q: x_training
+  cadence: training
+- id: P10
+  phase: predeploy
+  title: Define human oversight and override
+  action: Define the roles of people and the AI configuration. Specify who can override or disengage the
+    tool and how an override is recorded.
+  evidence: Oversight procedure and override log design.
+  owner: clinical_owner
+  applies:
+    q: autonomy
+    in:
+    - recommends
+    - acts_with_review
+    - acts_without_review
+  sources:
+  - N04
+  - N15
+  - E05
+  - W01
+  - I07
+  - R09
+  - A06
+  - A14
+  min_tier: moderate
+  status_q: x_oversight
+- id: P11
+  phase: predeploy
+  title: Publish a model card for the tool
+  action: 'Complete a one page model card: intended use and users, population, warnings, model and data
+    facts, key metrics for usefulness, fairness and safety, and references. Keep it current.'
+  evidence: Model card in the AI inventory entry, with version and date.
+  owner: clinical_owner
+  min_tier: moderate
+  status_q: x_modelcard
+  sources:
+  - R05
+  - R12
+  - A03
+  - A14
+  - M01
+  - M02
+  - M03
+  - M04
+  - M05
+  - M06
+  - M07
+  - M08
+  - M09
+- id: P12
+  phase: predeploy
+  title: Assess workflow fit and usability
+  action: Map where the tool enters the workflow. Test usability with real users. Record the benefit,
+    risk and cost case against the current process.
+  evidence: Workflow map, usability findings and the benefit risk cost summary.
+  owner: clinical_owner
+  min_tier: moderate
+  status_q: x_workflow
+  sources:
+  - R01
+  - R02
+  - R08
+- id: P13
+  phase: predeploy
+  title: Set the fairness approach and subgroups at risk
+  action: Define fairness for this use case. List the subgroups at risk. Set how bias will be tested before
+    and after go live. Justify any protected attribute used.
+  evidence: Fairness definition, subgroup list and bias monitoring strategy.
+  owner: quality_safety_lead
+  applies:
+    q: patient_level
+    eq: 'yes'
+  min_tier: moderate
+  status_q: x_fairness
+  sources:
+  - R03
+  - A02
+  - M04
+- id: P14
+  phase: predeploy
+  title: Run a silent prospective evaluation
+  action: Run the tool in the background on live data without showing outputs. Compare against outcomes
+    and subgroups. Approve go live only after review.
+  evidence: Silent run report and approval record.
+  owner: quality_safety_lead
+  min_tier: high
+  status_q: x_silent
+  sources:
+  - R17
+  - A04
+- id: P15
+  phase: predeploy
+  title: Pilot before scale and set go or no go criteria
+  action: Start with one site or team. Set success criteria for accuracy, reliability, acceptance, cost
+    and workload. Update the risk plan from pilot findings.
+  evidence: Pilot plan, success criteria and the scale up decision.
+  owner: clinical_owner
+  applies:
+    q: affects_care
+    eq: 'yes'
+  min_tier: moderate
+  status_q: x_pilot
+  sources:
+  - R19
+- id: O01
+  phase: operate
+  title: Write the monitoring plan
+  action: Name the metrics, the responsible parties, the review frequency and the escalation route. Cover
+    functionality and behavior, comparison of outputs to known parameters, use case outcomes, confidence
+    and data currency.
+  evidence: Monitoring plan with named metrics, owners and frequency.
+  owner: quality_safety_lead
+  sources:
+  - N01
+  - N07
+  - N08
+  - N15
+  - J05
+  - E01
+  - E03
+  - E08
+  - H03
+  - I04
+  - R20
+  min_tier: low
+  status_q: x_monitoring
+  cadence: monitoring
+- id: O02
+  phase: operate
+  title: Scale monitoring frequency to risk
+  action: Monitor more often when the tool is close to a clinical decision. Administrative tools can be
+    checked periodically.
+  evidence: Monitoring frequency recorded against the risk tier.
+  owner: quality_safety_lead
+  sources:
+  - J06
+  min_tier: low
+  status_q: x_monitoring
+  cadence: monitoring
+- id: O03
+  phase: operate
+  title: Track intended versus actual performance
+  action: Track known and emergent risks using intended performance against performance in the deployed
+    context. Document measurable improvements and declines.
+  evidence: Performance dashboard or periodic report.
+  owner: clinical_owner
+  applies:
+    any:
+    - q: affects_care
+      eq: 'yes'
+    - q: patient_level
+      eq: 'yes'
+  sources:
+  - N10
+  - N11
+  - J05
+  - E03
+  - H05
+  - W02
+  - W06
+  - I09
+  - R20
+  min_tier: moderate
+  status_q: x_monitoring
+  cadence: monitoring
+- id: O04
+  phase: operate
+  title: Audit for bias during use
+  action: Monitor and audit for bias during use as well as before deployment. Report results to the governance
+    group.
+  evidence: Periodic subgroup performance report.
+  owner: quality_safety_lead
+  applies:
+    any:
+    - q: patient_level
+      eq: 'yes'
+    - q: affects_care
+      eq: 'yes'
+  sources:
+  - J11
+  - N09
+  - W05
+  - R13
+  - A09
+  min_tier: moderate
+  status_q: x_subgroup
+  cadence: bias_audit
+- id: O05
+  phase: operate
+  title: Open a channel for users to report problems and appeal outputs
+  action: Give end users and affected communities a way to report problems and appeal outcomes. Capture
+    user input and overrides.
+  evidence: Reporting channel and appeal procedure.
+  owner: quality_safety_lead
+  sources:
+  - N10
+  - N15
+  - H05
+  - R13
+  min_tier: low
+  status_q: x_feedback
+- id: O06
+  phase: operate
+  title: Report adverse events and errors
+  action: Report adverse events and ongoing errors to leadership and to the vendor. Record events in the
+    internal incident system. Send locally found issues to the vendor.
+  evidence: Incident process that names the tool.
+  owner: quality_safety_lead
+  sources:
+  - J08
+  - N16
+  - N05
+  - E08
+  - E09
+  - W04
+  - R10
+  - R11
+  - A11
+  min_tier: low
+  status_q: x_incident
+- id: O07
+  phase: operate
+  title: Provide a route for confidential external reporting
+  action: Set a process for confidential, blinded reporting of AI safety events to an independent organization.
+    Designate who owns AI quality and safety.
+  evidence: Reporting procedure and designated owners.
+  owner: quality_safety_lead
+  sources:
+  - J09
+  - I02
+  - R11
+  min_tier: moderate
+  status_q: x_external
+- id: O08
+  phase: operate
+  title: Prepare incident response and recovery
+  action: Follow procedures to respond to and recover from a previously unknown risk. Communicate incidents
+    and errors to relevant parties, including affected communities. Record the response.
+  evidence: Incident response procedure and test or tabletop record.
+  owner: quality_safety_lead
+  sources:
+  - N12
+  - N16
+  - N15
+  - E09
+  - R10
+  - A07
+  - A11
+  min_tier: low
+  status_q: x_incident
+- id: O09
+  phase: operate
+  title: Measure clinician workload from the tool
+  action: Count the tasks the tool adds for clinicians and review them with users. This item has no source
+    clause. It is a local consideration.
+  evidence: Workload measure in the monitoring plan.
+  owner: clinical_owner
+  applies:
+    q: workload
+    eq: 'yes'
+  sources: []
+  sourced: false
+  min_tier: low
+  status_q: x_workload
+  cadence: monitoring
+- id: O10
+  phase: operate
+  title: Record overrides and review disagreement
+  action: Log when users override or ignore the tool. Review the pattern for automation bias and for tool
+    errors.
+  evidence: Override log and periodic review notes.
+  owner: quality_safety_lead
+  applies:
+    q: autonomy
+    in:
+    - recommends
+    - acts_with_review
+  min_tier: moderate
+  status_q: x_override
+  cadence: monitoring
+  sources:
+  - R09
+  - A06
+- id: O11
+  phase: operate
+  title: Control access and review audit logs
+  action: Limit access to the intended purpose. Keep audit trails of data access and model changes. Review
+    them on a schedule.
+  evidence: Access list, audit log and review record.
+  owner: privacy_officer
+  applies:
+    q: phi
+    in:
+    - identifiable
+    - deidentified
+  min_tier: moderate
+  status_q: x_auditlog
+  cadence: monitoring
+  sources:
+  - R15
+  - A07
+- id: O12
+  phase: operate
+  title: Watch for drift and trigger revalidation
+  action: Track input data and performance against baseline. Set the drift level that triggers review
+    or retraining. Check drift effects by subgroup.
+  evidence: Drift dashboard, trigger levels and review log.
+  owner: quality_safety_lead
+  applies:
+    any:
+    - d: changes_over_time
+    - q: model_type
+      in:
+      - predictive
+      - generative
+      - agentic
+  min_tier: moderate
+  status_q: x_drift
+  cadence: monitoring
+  sources:
+  - R20
+  - A01
+  - A09
+- id: O14
+  phase: operate
+  title: Arrange independent review
+  action: Have a party outside the build or buy team review the tool and its monitoring. Share the findings
+    with the governing group.
+  evidence: Independent review report.
+  owner: governance_lead
+  min_tier: high
+  status_q: x_independent
+  cadence: plan_review
+  sources:
+  - R21
+  - R23
+- id: C01
+  phase: retire
+  title: Require vendor notice of changes and revalidate after them
+  action: Require the vendor to notify you of model changes or updates that may need an unplanned performance
+    check. Revalidate after such changes.
+  evidence: Contract clause and a revalidation procedure.
+  owner: vendor_manager
+  applies:
+    all:
+    - d: vendor_supplied
+    - q: updates
+      in:
+      - vendor_updates
+      - continuous
+  sources:
+  - J07
+  - N14
+  - I08
+  - F01
+  - F03
+  - A12
+  min_tier: low
+  status_q: x_vendor_notice
+- id: C02
+  phase: retire
+  title: Control change management for retraining and updates
+  action: Put local retraining, retuning and continuous learning under change management. Revalidate before
+    a changed model is used.
+  evidence: Change control procedure for the tool.
+  owner: clinical_owner
+  applies:
+    q: updates
+    in:
+    - local_retrain
+    - continuous
+  sources:
+  - N15
+  - N14
+  - E06
+  - I04
+  - F01
+  - F02
+  - F03
+  - R14
+  - A07
+  - A12
+  min_tier: low
+  status_q: x_vendor_notice
+- id: C03
+  phase: retire
+  title: Set criteria and a mechanism to suspend or deactivate
+  action: Define the performance or outcome departures that trigger suspension. Assign who acts and how
+    the tool is disengaged.
+  evidence: Suspension criteria and a tested disengage procedure.
+  owner: clinical_owner
+  sources:
+  - N13
+  - N15
+  - H03
+  min_tier: moderate
+  status_q: x_suspend
+- id: C04
+  phase: retire
+  title: Plan decommissioning
+  action: Plan how the tool will be phased out safely without raising risk, including what replaces it
+    and what happens to data.
+  evidence: Decommissioning plan.
+  owner: governance_lead
+  sources:
+  - N02
+  - N15
+  - W06
+  - A08
+  - A10
+  min_tier: moderate
+  status_q: x_decommission
+- id: C05
+  phase: retire
+  title: Review the governance plan on a schedule
+  action: Plan periodic review of this governance plan and define the roles for it.
+  evidence: Scheduled review in the AI inventory.
+  owner: governance_lead
+  sources:
+  - N01
+  - E07
+  - I09
+  - A08
+  min_tier: low
+  status_q: x_plan_review
+  cadence: plan_review

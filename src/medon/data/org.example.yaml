@@ -1,0 +1,22 @@
+# Copy this file and edit it for your institution. Nothing here comes from a framework.
+# Leave a value blank to print "Set by local policy" in the plan.
+organization: Example Health System
+roles:
+  governance_lead: Chief Medical Informatics Officer, chair of the AI governance committee
+  clinical_owner: Clinical lead named on the project
+  quality_safety_lead: Director of Quality and Patient Safety
+  vendor_manager: Procurement and vendor management
+  privacy_officer: Privacy Officer
+  training_lead: Clinical education
+cadence:
+  # Frequencies are your policy choices. Fill by tier. The source documents state none.
+  monitoring: {high: , moderate: , low: }
+  bias_audit: {high: , moderate: , low: }
+  training: {high: , moderate: , low: }
+  board_report: {high: , moderate: , low: }
+  plan_review: {high: , moderate: , low: }
+local_policy:
+  # Optional: link or name your own policy for any item id. Shown next to the item.
+  # G02: AI Governance Committee charter, policy 4.12
+extra_items: []
+  # Optional local requirements. Same fields as items.yaml. Use ids that start with L.

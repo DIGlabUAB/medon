@@ -1,0 +1,14 @@
+project: {name: In house clinic no show model for scheduling, clinical_lead: Example Analyst, date: 2026-10-04}
+answers:
+  function: administrative
+  autonomy: informs
+  model_type: predictive
+  source: in_house
+  users: [staff]
+  affects_care: "no"
+  patient_level: "yes"
+  harm: minimal
+  phi: identifiable
+  updates: local_retrain
+  workload: "no"
+  x_owner: yes

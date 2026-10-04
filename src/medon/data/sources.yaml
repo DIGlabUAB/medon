@@ -1,0 +1,690 @@
+note: Rows were extracted by a language model from fetched text. Author review against the source PDFs
+  is pending. Status draft means not independently checked.
+frameworks:
+  nistairmf:
+    name: NIST AI Risk Management Framework 1.0
+    short: NIST AI RMF
+    document: NIST AI 100-1
+    date: 2023-01
+    url: https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf
+    cite: National Institute of Standards and Technology. Artificial Intelligence Risk Management Framework
+      (AI RMF 1.0). NIST AI 100-1. 2023. https://doi.org/10.6028/NIST.AI.100-1
+  jcchai:
+    name: Joint Commission and CHAI Guidance on the Responsible Use of AI in Healthcare
+    short: JC and CHAI RUAIH
+    document: Responsible Use of AI in Healthcare guidance
+    date: '2025-09-17'
+    url: https://digitalassets.jointcommission.org/api/public/content/dcfcf4f1a0cc45cdb526b3cb034c68c2
+    cite: The Joint Commission and Coalition for Health AI. Guidance on the Responsible Use of AI in Healthcare
+      (RUAIH). 17 September 2025. https://digitalassets.jointcommission.org/api/public/content/dcfcf4f1a0cc45cdb526b3cb034c68c2
+  euaiact:
+    name: EU Artificial Intelligence Act, high risk system requirements
+    short: EU AI Act
+    document: Regulation (EU) 2024/1689
+    date: 2024-07
+    url: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+    cite: European Parliament and Council of the European Union. Regulation (EU) 2024/1689 laying down
+      harmonised rules on artificial intelligence (Artificial Intelligence Act). Official Journal of the
+      European Union, 12 July 2024. https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+  onchti1:
+    name: ONC HTI-1 decision support intervention criterion
+    short: ONC HTI-1
+    document: 45 CFR 170.315(b)(11)
+    date: 2024-01
+    url: https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-D/part-170/subpart-C/section-170.315
+    cite: 'Office of the National Coordinator for Health Information Technology. Health Data, Technology,
+      and Interoperability: Certification Program Updates, Algorithm Transparency, and Information Sharing
+      (HTI-1) Final Rule. 89 Fed. Reg. 1192 (4 January 2024). 45 CFR 170.315(b)(11).'
+  who:
+    name: WHO Ethics and Governance of Artificial Intelligence for Health
+    short: WHO AI for health
+    document: WHO guidance
+    date: 2021-06
+    url: https://iris.who.int/handle/10665/341996
+    cite: 'World Health Organization. Ethics and governance of artificial intelligence for health: WHO
+      guidance. Geneva: WHO; 2021. https://iris.who.int/handle/10665/341996'
+  iso42001:
+    name: ISO/IEC 42001 Artificial intelligence management system
+    short: ISO/IEC 42001
+    document: ISO/IEC 42001:2023
+    date: 2023-12
+    url: https://www.iso.org/standard/81230.html
+    cite: International Organization for Standardization and International Electrotechnical Commission.
+      ISO/IEC 42001:2023 Information technology, Artificial intelligence, Management system. 2023. https://www.iso.org/standard/81230.html
+  fdapccp:
+    name: FDA Predetermined Change Control Plan guidance for AI enabled device software
+    short: FDA PCCP
+    document: FDA guidance
+    date: 2024-12
+    url: https://www.fda.gov/media/166704/download
+    cite: U.S. Food and Drug Administration. Marketing Submission Recommendations for a Predetermined
+      Change Control Plan for Artificial Intelligence-Enabled Device Software Functions. Guidance for
+      Industry and FDA Staff. 2024. https://www.fda.gov/media/166704/download
+  chairag:
+    name: CHAI Responsible AI Guide
+    short: CHAI Responsible AI Guide
+    document: Responsible AI Guide
+    date: see source
+    url: https://assets.ctfassets.net/7s4afyr9pmov/6e7PrdrsNTQ5FjZ4uyRjTW/c4070131c523d4e1db26105aa51f087d/CHAI_Responsible-AI-Guide.pdf
+    cite: Coalition for Health AI. Responsible AI Guide. https://assets.ctfassets.net/7s4afyr9pmov/6e7PrdrsNTQ5FjZ4uyRjTW/c4070131c523d4e1db26105aa51f087d/CHAI_Responsible-AI-Guide.pdf
+  chaiasg:
+    name: CHAI Assurance Standards Guide
+    short: CHAI Assurance Standards
+    document: Assurance Standards Guide (draft)
+    date: 2024-06 draft
+    url: https://www.chai.org/blog/chai-releases-draft-responsible-health-ai-framework-for-public-comment
+    cite: Coalition for Health AI. Assurance Standards Guide (draft for public comment, June 2024). https://www.chai.org/blog/chai-releases-draft-responsible-health-ai-framework-for-public-comment
+  chaiamc:
+    name: CHAI Applied Model Card
+    short: CHAI Applied Model Card
+    document: Applied Model Card documentation v0.1
+    date: v0.1
+    url: https://registry.chai.org/applied-model-card
+    cite: Coalition for Health AI. Applied Model Card, documentation v0.1. https://mc.chai.org/v0.1/documentation.pdf
+      ; template and schema at https://github.com/coalition-for-health-ai/mc-schema
+controls:
+- id: N01
+  framework: nistairmf
+  clause: GOVERN 1.5
+  requirement: Plan ongoing monitoring and periodic review of the risk process, define roles, and set
+    the review frequency.
+  status: draft
+- id: N02
+  framework: nistairmf
+  clause: GOVERN 1.7
+  requirement: Have processes for decommissioning and phasing out AI systems safely, without raising risk.
+  status: draft
+- id: N03
+  framework: nistairmf
+  clause: GOVERN 2.1 and 2.3
+  requirement: Document roles, responsibilities and lines of communication. Executive leadership owns
+    decisions on AI risk.
+  status: draft
+- id: N04
+  framework: nistairmf
+  clause: GOVERN 3.2
+  requirement: Define and differentiate roles for human and AI configurations and for oversight of AI
+    systems.
+  status: draft
+- id: N05
+  framework: nistairmf
+  clause: GOVERN 4.3
+  requirement: Enable AI testing, incident identification and information sharing.
+  status: draft
+- id: N06
+  framework: nistairmf
+  clause: GOVERN 6.1 and 6.2
+  requirement: Address third party AI risks by policy. Have contingency processes for failures or incidents
+    in high risk third party data or AI.
+  status: draft
+- id: N07
+  framework: nistairmf
+  clause: MEASURE 2.4
+  requirement: Monitor the functionality and behavior of the AI system and its components in production.
+  status: draft
+- id: N08
+  framework: nistairmf
+  clause: MEASURE 2.6
+  requirement: Evaluate safety regularly. Safety metrics reflect reliability, robustness, real time monitoring
+    and response times for AI system failures.
+  status: draft
+- id: N09
+  framework: nistairmf
+  clause: MEASURE 2.11
+  requirement: Evaluate and document fairness and bias.
+  status: draft
+- id: N10
+  framework: nistairmf
+  clause: MEASURE 3.1 and 3.3
+  requirement: Track known and emergent risks regularly using intended versus actual performance in deployed
+    contexts. Give end users and affected communities channels to report problems and appeal outcomes.
+  status: draft
+- id: N11
+  framework: nistairmf
+  clause: MEASURE 4.2 and 4.3
+  requirement: Validate performance in the deployment context with domain experts. Identify and document
+    measurable performance improvements or declines.
+  status: draft
+- id: N12
+  framework: nistairmf
+  clause: MANAGE 2.3
+  requirement: Follow procedures to respond to and recover from a previously unknown risk.
+  status: draft
+- id: N13
+  framework: nistairmf
+  clause: MANAGE 2.4
+  requirement: Have mechanisms, with assigned and understood responsibilities, to supersede, disengage
+    or deactivate systems whose performance or outcomes depart from intended use.
+  status: draft
+- id: N14
+  framework: nistairmf
+  clause: MANAGE 3.1 and 3.2
+  requirement: Monitor third party resources and pre trained models regularly. Apply and document risk
+    controls.
+  status: draft
+- id: N15
+  framework: nistairmf
+  clause: MANAGE 4.1
+  requirement: Implement post deployment monitoring plans. They cover user input capture, appeal and override,
+    decommissioning, incident response, recovery and change management.
+  status: draft
+- id: N16
+  framework: nistairmf
+  clause: MANAGE 4.3
+  requirement: Communicate incidents and errors to relevant AI actors, including affected communities.
+    Track, respond to and recover from incidents, and document this.
+  status: draft
+- id: J01
+  framework: jcchai
+  clause: Element 1, leadership
+  requirement: Appoint individuals with technology expertise to lead AI use. Include a multidisciplinary
+    team spanning executive, compliance, IT, safety, clinical, cybersecurity, privacy and stakeholder
+    roles.
+  status: draft
+- id: J02
+  framework: jcchai
+  clause: Element 1, policy and board
+  requirement: Policies cover selection through lifecycle management and equitable use. The governing
+    board receives regular updates on use, outcomes and adverse events.
+  status: draft
+- id: J03
+  framework: jcchai
+  clause: Element 3, data use agreements
+  requirement: Vendor data agreements define permitted uses, prohibit re identification, require security
+    compliance and reserve audit rights with penalties.
+  status: draft
+- id: J04
+  framework: jcchai
+  clause: Element 4, pre deployment requests
+  requirement: Ask vendors how the tool was validated and tested, whether they will tune or validate on
+    a deployment representative sample, and how bias was evaluated.
+  status: draft
+- id: J05
+  framework: jcchai
+  clause: Element 4, monitoring policy
+  requirement: Write policies naming responsible parties for regular validation, comparison of outputs
+    to known parameters, checks of use case outcomes and confidence, confirmation of data currency, and
+    an AI dashboard.
+  status: draft
+- id: J06
+  framework: jcchai
+  clause: Element 4, risk based frequency
+  requirement: Monitor more often for tools close to clinical decisions. Administrative tools can be checked
+    periodically.
+  status: draft
+- id: J07
+  framework: jcchai
+  clause: Element 4, vendor feedback
+  requirement: Establish channels with vendors. Vendors notify the health system of model changes or updates
+    that may need an unplanned performance check. Locally found issues go to vendors.
+  status: draft
+- id: J08
+  framework: jcchai
+  clause: Element 4, adverse event reporting
+  requirement: Create a process to report adverse events or ongoing errors to leadership and vendors.
+  status: draft
+- id: J09
+  framework: jcchai
+  clause: Element 5, voluntary blinded reporting
+  requirement: Have a process for confidential, blinded reporting of AI safety events to an independent
+    organization. Record events in internal incident systems. Designated individuals own AI quality and
+    safety.
+  status: draft
+- id: J10
+  framework: jcchai
+  clause: Element 6, risk and bias process
+  requirement: Identify, categorize and document prospective and observed risks and biases, especially
+    safety and access risks. Use model cards.
+  status: draft
+- id: J11
+  framework: jcchai
+  clause: Element 6, local validation and ongoing bias checks
+  requirement: Check that tool testing covers the populations served. Tune or test on local data. Monitor
+    and audit for bias before deployment and during use.
+  status: draft
+- id: J12
+  framework: jcchai
+  clause: Element 7, education and training
+  requirement: Provide role specific training and documentation. Define who may use each tool. Decide
+    when training is needed before rollout and whether it must recur.
+  status: draft
+- id: J13
+  framework: jcchai
+  clause: Element 2, patient privacy and transparency
+  requirement: Protect patient data from unauthorized use or release. Disclose and educate patients and
+    families on AI use. Notify patients when AI directly affects their care and how their data are used.
+    Obtain consent where and when relevant. Policies address transparency for staff and patients.
+  status: draft
+- id: E01
+  framework: euaiact
+  clause: Article 9, risk management system
+  requirement: Run a continuous risk management process across the lifecycle. Identify known and foreseeable
+    risks, estimate them, adopt mitigation and test.
+  status: draft
+- id: E02
+  framework: euaiact
+  clause: Article 10, data and data governance
+  requirement: Govern training, validation and test data. Examine data for bias and gaps relevant to the
+    intended population.
+  status: draft
+- id: E03
+  framework: euaiact
+  clause: Article 12, record keeping
+  requirement: Log events automatically over the system lifetime so operation can be traced and monitored.
+  status: draft
+- id: E04
+  framework: euaiact
+  clause: Article 13, transparency and information to deployers
+  requirement: Supply instructions that state intended purpose, accuracy, known limits and oversight measures.
+  status: draft
+- id: E05
+  framework: euaiact
+  clause: Article 14, human oversight
+  requirement: Design for effective oversight by people who can understand outputs, override them and
+    stop the system.
+  status: draft
+- id: E06
+  framework: euaiact
+  clause: Article 15, accuracy, robustness and cybersecurity
+  requirement: Declare accuracy levels. Keep performance robust and resilient to errors, faults and attacks.
+  status: draft
+- id: E07
+  framework: euaiact
+  clause: Article 17, quality management system
+  requirement: Keep documented procedures for compliance, change management, testing, monitoring and accountability.
+  status: draft
+- id: E08
+  framework: euaiact
+  clause: Article 26, obligations of deployers
+  requirement: Use the system per instructions, assign oversight to competent staff, monitor operation,
+    keep logs and report problems.
+  status: draft
+- id: E09
+  framework: euaiact
+  clause: Articles 72 and 73, post market monitoring and serious incident reporting
+  requirement: Collect and analyze performance data after release. Report serious incidents to the authority
+    without delay.
+  status: draft
+- id: H01
+  framework: onchti1
+  clause: 170.315(b)(11), source attributes
+  requirement: 'Make intervention source attributes available to users: origin, funding, release dates,
+    inputs used and how it was validated.'
+  status: draft
+- id: H02
+  framework: onchti1
+  clause: 170.315(b)(11), risk analysis
+  requirement: Analyze risks to validity, reliability, robustness, fairness, intelligibility, safety,
+    security and privacy for predictive tools.
+  status: draft
+- id: H03
+  framework: onchti1
+  clause: 170.315(b)(11), risk mitigation
+  requirement: Put documented practices in place to mitigate the risks found in the analysis.
+  status: draft
+- id: H04
+  framework: onchti1
+  clause: 170.315(b)(11), governance
+  requirement: Set policies and controls for how data are acquired, managed and used by the tool.
+  status: draft
+- id: H05
+  framework: onchti1
+  clause: 170.315(b)(11), feedback and export
+  requirement: Let users give feedback on outputs and export it in computable form with the action taken.
+  status: draft
+- id: W01
+  framework: who
+  clause: Principle 1, protect human autonomy
+  requirement: Keep humans in control of health decisions. Protect privacy and obtain valid consent.
+  status: draft
+- id: W02
+  framework: who
+  clause: Principle 2, promote well being, safety and the public interest
+  requirement: Meet regulatory requirements for safety, accuracy and efficacy. Apply quality control in
+    practice.
+  status: draft
+- id: W03
+  framework: who
+  clause: Principle 3, transparency, explainability and intelligibility
+  requirement: Publish enough information before deployment so the tool can be understood, debated and
+    challenged.
+  status: draft
+- id: W04
+  framework: who
+  clause: Principle 4, responsibility and accountability
+  requirement: Name who is responsible. Provide appropriate mechanisms for questioning and redress.
+  status: draft
+- id: W05
+  framework: who
+  clause: Principle 5, inclusiveness and equity
+  requirement: Design and use for the widest appropriate access. Monitor for bias and unequal performance.
+  status: draft
+- id: W06
+  framework: who
+  clause: Principle 6, responsive and sustainable
+  requirement: Assess responsiveness during real use. Plan for sustainability and for retirement of tools
+    that no longer perform.
+  status: draft
+- id: I01
+  framework: iso42001
+  clause: Clause 5, leadership and AI policy
+  requirement: Top management sets an AI policy, assigns roles and commits resources.
+  status: draft
+- id: I02
+  framework: iso42001
+  clause: Annex A.3, internal organization
+  requirement: Define roles and responsibilities. Provide a process to report concerns.
+  status: draft
+- id: I03
+  framework: iso42001
+  clause: Annex A.5, assessing impacts of AI systems
+  requirement: Assess impacts on individuals and groups, document results and keep them current.
+  status: draft
+- id: I04
+  framework: iso42001
+  clause: Annex A.6, AI system life cycle
+  requirement: Set objectives, verification and validation criteria, deployment and operation controls,
+    monitoring and change handling.
+  status: draft
+- id: I05
+  framework: iso42001
+  clause: Annex A.7, data for AI systems
+  requirement: Document data acquisition, quality, provenance and preparation.
+  status: draft
+- id: I06
+  framework: iso42001
+  clause: Annex A.8, information for interested parties
+  requirement: Provide user documentation, incident communication and reporting channels.
+  status: draft
+- id: I07
+  framework: iso42001
+  clause: Annex A.9, use of AI systems
+  requirement: Define responsible use processes, objectives and intended use.
+  status: draft
+- id: I08
+  framework: iso42001
+  clause: Annex A.10, third party and customer relationships
+  requirement: Allocate responsibilities with suppliers and customers. Assess supplier risk.
+  status: draft
+- id: I09
+  framework: iso42001
+  clause: Clauses 9 and 10, performance evaluation and improvement
+  requirement: Monitor, audit and review the management system. Correct nonconformity and improve.
+  status: draft
+- id: F01
+  framework: fdapccp
+  clause: Description of modifications
+  requirement: State the planned changes to the AI function that will be made after release.
+  status: draft
+- id: F02
+  framework: fdapccp
+  clause: Modification protocol
+  requirement: Define data handling, retraining, performance evaluation and update procedures for each
+    planned change.
+  status: draft
+- id: F03
+  framework: fdapccp
+  clause: Impact assessment
+  requirement: Assess benefits and risks of each modification and how risks are mitigated.
+  status: draft
+- id: R01
+  framework: chairag
+  clause: Stage 1, usefulness
+  requirement: Justify why AI addresses the problem and why it beats non AI alternatives. Complete a risk
+    benefit and cost benefit analysis.
+  status: draft
+- id: R02
+  framework: chairag
+  clause: Stage 1, usefulness
+  requirement: Assess workflow integration, including the effect on patient clinician interaction.
+  status: draft
+- id: R03
+  framework: chairag
+  clause: Stage 1, fairness
+  requirement: Define fairness for the use case. Identify subgroups at risk. Set a bias monitoring and
+    mitigation strategy.
+  status: draft
+- id: R04
+  framework: chairag
+  clause: Stage 1, fairness and security
+  requirement: For acquired tools, ask the vendor for subgroup performance and parity data. Review third
+    party security practices.
+  status: draft
+- id: R05
+  framework: chairag
+  clause: Stage 1, transparency
+  requirement: Document intended use, users and target population with inclusion and exclusion criteria.
+    Choose a documentation format such as a model card.
+  status: draft
+- id: R06
+  framework: chairag
+  clause: Stage 1, security and privacy
+  requirement: Keep an AI systems inventory with data processing maps. Run an initial privacy and security
+    risk assessment.
+  status: draft
+- id: R07
+  framework: chairag
+  clause: Stage 1, safety
+  requirement: 'Confirm regulatory and ethical requirements: FDA software criteria, IRB need, consent
+    and adverse event disclosure.'
+  status: draft
+- id: R08
+  framework: chairag
+  clause: Stage 2, usefulness
+  requirement: Assess usability with human factors methods. Document robustness testing.
+  status: draft
+- id: R09
+  framework: chairag
+  clause: Stage 2, safety
+  requirement: Let end users control, direct and override recommendations. Record each override.
+  status: draft
+- id: R10
+  framework: chairag
+  clause: Stage 2, safety
+  requirement: Write a risk management plan with adverse events, causes and corrective actions. Define
+    adverse and serious adverse events.
+  status: draft
+- id: R11
+  framework: chairag
+  clause: Stage 2, safety
+  requirement: Set reporting and recall procedures and a threshold for reporting potential patient harm.
+    Share concerns with the developer and regulators.
+  status: draft
+- id: R12
+  framework: chairag
+  clause: Stage 2, transparency
+  requirement: 'Label the model in plain language: development, purpose, limits, error rates and underrepresented
+    subpopulations. Update the label when new limits appear.'
+  status: draft
+- id: R13
+  framework: chairag
+  clause: Stage 2, fairness
+  requirement: Provide simple channels for end user feedback on bias. Review feedback in time to stop
+    escalation.
+  status: draft
+- id: R14
+  framework: chairag
+  clause: Stage 2, accountability
+  requirement: Set a governance structure and a change management plan that split developer and implementer
+    duties. Define how the teams communicate.
+  status: draft
+- id: R15
+  framework: chairag
+  clause: Stage 2, security and privacy
+  requirement: 'Set data governance: access controls, secure transfer, encryption, audit trails, retention,
+    third party sharing terms and incident response.'
+  status: draft
+- id: R16
+  framework: chairag
+  clause: Stage 3, engineering
+  requirement: Follow a data management plan. Use quality assured data with documented lineage that represents
+    the target population. Test robustness across populations.
+  status: draft
+- id: R17
+  framework: chairag
+  clause: Stage 4, assess
+  requirement: Run installation qualification and local validation. Run a prospective silent evaluation.
+  status: draft
+- id: R18
+  framework: chairag
+  clause: Stage 4, assess
+  requirement: Train end users. Name the business owner accountable for testing. Approve implementation,
+    measurement and mitigation plans before the pilot.
+  status: draft
+- id: R19
+  framework: chairag
+  clause: Stage 5, pilot
+  requirement: Pilot first. Assess real world impact, workflow fit, acceptance and downstream effects.
+    Update the risk plan. Decide on scale up from set success criteria.
+  status: draft
+- id: R20
+  framework: chairag
+  clause: Stage 6, deploy and monitor
+  requirement: Monitor continuously. Audit regularly. Watch for drift. Set retraining procedures. Document
+    all changes and share findings.
+  status: draft
+- id: R21
+  framework: chairag
+  clause: Governance foundation
+  requirement: Assign roles by SOP. Place oversight high enough to decide on resources, incidents and
+    rollback. Provide independent review and train staff.
+  status: draft
+- id: R22
+  framework: chairag
+  clause: Stakeholder roles
+  requirement: Name a business owner, a technology owner and an executive sponsor. Give end users a route
+    to report risks.
+  status: draft
+- id: R23
+  framework: chairag
+  clause: Independent review
+  requirement: Arrange independent review for objectivity. Share results to build trust.
+  status: draft
+- id: A01
+  framework: chaiasg
+  clause: Stage 3, usefulness
+  requirement: Check that training data match the deployment setting and that local data represent the
+    population. Monitor data quality and drift.
+  status: draft
+- id: A02
+  framework: chaiasg
+  clause: Stage 3, fairness
+  requirement: Justify any use of protected attributes. Check proxies and composite scores for hidden
+    bias.
+  status: draft
+- id: A03
+  framework: chaiasg
+  clause: Stage 3, transparency
+  requirement: Document data provenance, lineage and limits. Version control the datasets.
+  status: draft
+- id: A04
+  framework: chaiasg
+  clause: Stage 4, fairness
+  requirement: Keep training and test data independent. Assess performance and parity across subgroups.
+  status: draft
+- id: A05
+  framework: chaiasg
+  clause: Stage 4, security
+  requirement: Assess third party providers. Keep audit records and system documentation. Set up vulnerability
+    reporting.
+  status: draft
+- id: A06
+  framework: chaiasg
+  clause: Stage 5, transparency
+  requirement: Reduce automation bias. Manage clinician disagreement with outputs. Assess what users do
+    after an AI interaction.
+  status: draft
+- id: A07
+  framework: chaiasg
+  clause: Stage 5, security
+  requirement: Run configuration change control. Review audit logs. Keep an incident response plan. Set
+    resilience needs for critical AI services.
+  status: draft
+- id: A08
+  framework: chaiasg
+  clause: Stage 5 and 6, safety
+  requirement: Review regularly whether the system is still relevant or obsolete.
+  status: draft
+- id: A09
+  framework: chaiasg
+  clause: Stage 6, fairness
+  requirement: Monitor drift effects on bias. Name who monitors bias. Assess drift risk between pilot
+    and full deployment.
+  status: draft
+- id: A10
+  framework: chaiasg
+  clause: Stage 6, transparency
+  requirement: Tell patients and affected groups about the AI role. Make end of life processes clear.
+  status: draft
+- id: A11
+  framework: chaiasg
+  clause: Stage 6, security
+  requirement: Notify stakeholders of cybersecurity and privacy incidents. Report unintended uses. Assure
+    the supply chain.
+  status: draft
+- id: A12
+  framework: chaiasg
+  clause: Stage 6, safety
+  requirement: Confirm updates keep the system safe and effective. Analyze impact on safety and benefit.
+  status: draft
+- id: A13
+  framework: chaiasg
+  clause: Governance principle
+  requirement: Provide high level oversight, a bias management structure with clear roles, and mandatory
+    training on ethics, quality, intended use and risks.
+  status: draft
+- id: A14
+  framework: chaiasg
+  clause: Stage 2, fairness and transparency
+  requirement: Define clear decision thresholds. Provide explainability measures for subgroup assessment.
+  status: draft
+- id: M01
+  framework: chaiamc
+  clause: Header
+  requirement: Record name, developer, contact for issues, release stage, release date, version, global
+    availability and regulatory approval.
+  status: draft
+- id: M02
+  framework: chaiamc
+  clause: Uses and directions
+  requirement: State intended use and workflow, primary users, how to use, target population and cautioned
+    out of scope settings.
+  status: draft
+- id: M03
+  framework: chaiamc
+  clause: Warnings
+  requirement: State known risks and limitations, known biases and ethical considerations, and the clinical
+    risk level.
+  status: draft
+- id: M04
+  framework: chaiamc
+  clause: Trust ingredients, AI system facts
+  requirement: State outputs, model type, foundation models, input data, development data, bias mitigation,
+    maintenance, security practices and transparency mechanisms.
+  status: draft
+- id: M05
+  framework: chaiamc
+  clause: Transparency information
+  requirement: State the funding source, third party information and stakeholders consulted.
+  status: draft
+- id: M06
+  framework: chaiamc
+  clause: Key metrics, usefulness, usability and efficacy
+  requirement: Report goal, result, interpretation, test type, test data and validation process.
+  status: draft
+- id: M07
+  framework: chaiamc
+  clause: Key metrics, fairness and equity
+  requirement: Report the same six metric fields for fairness and equity.
+  status: draft
+- id: M08
+  framework: chaiamc
+  clause: Key metrics, safety and reliability
+  requirement: Report the same six metric fields for safety and reliability.
+  status: draft
+- id: M09
+  framework: chaiamc
+  clause: Resources
+  requirement: List evaluation references, clinical trials, publications, reimbursement status and patient
+    consent or disclosure.
+  status: draft

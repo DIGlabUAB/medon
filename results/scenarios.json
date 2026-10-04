@@ -1,0 +1,153 @@
+{
+  "n_scenarios": 100,
+  "tier_counts_archetypes": {
+    "high": 9,
+    "moderate": 6,
+    "low": 5
+  },
+  "tier_counts_scenarios": {
+    "high": 45,
+    "moderate": 30,
+    "low": 25
+  },
+  "concordant": 18,
+  "discordant": [
+    {
+      "archetype": "Prior authorization letter drafting",
+      "expected": "low",
+      "computed": "moderate"
+    },
+    {
+      "archetype": "Agent for referral outreach and scheduling",
+      "expected": "moderate",
+      "computed": "high"
+    }
+  ],
+  "plan_size": {
+    "high": {
+      "min": 32,
+      "median": 33,
+      "max": 35
+    },
+    "moderate": {
+      "min": 30,
+      "median": 32.5,
+      "max": 33
+    },
+    "low": {
+      "min": 11,
+      "median": 13,
+      "max": 16
+    }
+  },
+  "plan_size_all": {
+    "min": 11,
+    "median": 32.0,
+    "max": 35
+  },
+  "maturity": {
+    "M0 none": {
+      "done": 0,
+      "in progress": 0,
+      "open": 558,
+      "total": 558
+    },
+    "M1 owner and committee": {
+      "done": 40,
+      "in progress": 0,
+      "open": 518,
+      "total": 558
+    },
+    "M2 partial": {
+      "done": 284,
+      "in progress": 142,
+      "open": 132,
+      "total": 558
+    },
+    "M3 strong": {
+      "done": 509,
+      "in progress": 15,
+      "open": 34,
+      "total": 558
+    },
+    "M4 full": {
+      "done": 558,
+      "in progress": 0,
+      "open": 0,
+      "total": 558
+    }
+  },
+  "m4_open_items": 0,
+  "item_freq": {
+    "G01": 20,
+    "G02": 20,
+    "G03": 15,
+    "P01": 20,
+    "P02": 20,
+    "P03": 17,
+    "P04": 15,
+    "P05": 15,
+    "P06": 16,
+    "P07": 17,
+    "P08": 17,
+    "P09": 19,
+    "P10": 14,
+    "P11": 15,
+    "P12": 15,
+    "P13": 15,
+    "P14": 9,
+    "P15": 14,
+    "O01": 20,
+    "O02": 20,
+    "O03": 15,
+    "O04": 15,
+    "O05": 20,
+    "O06": 20,
+    "O07": 15,
+    "O08": 20,
+    "O09": 7,
+    "O10": 12,
+    "O11": 15,
+    "O12": 15,
+    "O14": 9,
+    "C01": 9,
+    "C02": 3,
+    "C03": 15,
+    "C04": 15,
+    "C05": 20
+  },
+  "items_in_all": [
+    "G01",
+    "G02",
+    "P01",
+    "P02",
+    "O01",
+    "O02",
+    "O05",
+    "O06",
+    "O08",
+    "C05"
+  ],
+  "items_never": [],
+  "controls_cited_any": 107,
+  "controls_total": 107,
+  "controls_uncited": [],
+  "unsure": {
+    "n": 220,
+    "up": 46,
+    "same": 174,
+    "down": 0,
+    "bump_by_question": {
+      "function": 11,
+      "autonomy": 11,
+      "harm": 11,
+      "model_type": 3,
+      "users": 5,
+      "affects_care": 5
+    }
+  },
+  "all_unsure_tier": "high",
+  "confirm_flags_total": 0,
+  "m4_all_done": true,
+  "workload_item_in": 7
+}

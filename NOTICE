@@ -1,0 +1,10 @@
+Medon
+Copyright 2026 Sandeep Bodduluri
+
+Code in this repository is licensed under the Apache License, Version 2.0.
+Data under src/medon/data/ is licensed under CC BY 4.0. See DATALICENSE.md.
+
+Control rows paraphrase the NIST AI Risk Management Framework 1.0 and the Joint
+Commission and CHAI responsible use guidance. Those documents belong to their
+publishers. This project is not affiliated with or endorsed by NIST, The Joint
+Commission or the Coalition for Health AI.

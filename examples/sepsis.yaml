@@ -1,0 +1,20 @@
+project: {name: Vendor sepsis early warning in the EHR, clinical_lead: Example Physician, date: 2026-10-04}
+answers:
+  function: clinical_support
+  autonomy: recommends
+  model_type: predictive
+  source: vendor_embedded
+  users: [clinicians, nurses]
+  affects_care: "yes"
+  patient_level: "yes"
+  harm: serious
+  phi: identifiable
+  updates: vendor_updates
+  workload: "yes"
+  x_owner: yes
+  x_committee: partial
+  x_intended_use: partial
+  x_vendor_validation: yes
+  x_local_validation: no
+  x_monitoring: partial
+  x_vendor_notice: no

@@ -1,0 +1,37 @@
+# Local triage heuristic. It is a design choice, not a clause of any framework.
+# The only source principle is JC and CHAI J06: monitor more often for tools close to clinical decisions.
+# Unsure answers count toward the higher tier. Edit this file or override the tier per project.
+derived:
+  third_party: {q: source, in: [vendor_product, vendor_embedded, foundation_model_api, open_source, academic_transfer]}
+  vendor_supplied: {q: source, in: [vendor_product, vendor_embedded]}
+  patient_facing: {q: users, has: patients}
+  uses_phi: {q: phi, eq: identifiable}
+  changes_over_time: {q: updates, in: [vendor_updates, local_retrain, continuous]}
+  generative_or_agentic: {q: model_type, in: [generative, agentic]}
+tiers:
+  - id: high
+    when:
+      any:
+        - {q: function, in: [diagnostic, treatment]}
+        - {q: harm, eq: serious}
+        - {q: autonomy, eq: acts_without_review}
+        - all: [{q: autonomy, eq: acts_with_review}, {q: affects_care, eq: "yes"}]
+  - id: moderate
+    when:
+      any:
+        - {q: function, in: [clinical_support, clinical_info]}
+        - {q: affects_care, eq: "yes"}
+        - {d: patient_facing}
+        - {q: harm, eq: moderate}
+        - all: [{d: generative_or_agentic}, {q: patient_level, eq: "yes"}]
+  - id: low
+    when: {}
+# Risk profile axes for the radar view. Descriptive only. They do not change the tier.
+# Score 0 to 3 per answer. Unsure scores 2 and is drawn as an open marker.
+profile:
+  - {id: proximity, label: Clinical proximity, q: function, scores: {administrative: 0, operational: 1, clinical_info: 1, clinical_support: 2, diagnostic: 3, treatment: 3}}
+  - {id: autonomy, label: Autonomy, q: autonomy, scores: {informs: 0, recommends: 1, acts_with_review: 2, acts_without_review: 3}}
+  - {id: harm, label: Harm severity, q: harm, scores: {minimal: 0, moderate: 2, serious: 3}}
+  - {id: thirdparty, label: Third party reliance, q: source, scores: {in_house: 0, open_source: 1, academic_transfer: 1, foundation_model_api: 2, vendor_embedded: 3, vendor_product: 3}}
+  - {id: change, label: Change over time, q: updates, scores: {fixed: 0, local_retrain: 2, vendor_updates: 2, continuous: 3}}
+  - {id: data, label: Data sensitivity, q: phi, scores: {none: 0, deidentified: 1, identifiable: 3}}
