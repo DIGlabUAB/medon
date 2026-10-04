@@ -9,8 +9,8 @@
 ## Add or change an item
 Each item has a phase, action, evidence, owner role, source controls and a minimum tier. Set `sourced: false` and `sources: []` if no clause requires it. Use short sentences.
 
-## Move a control from draft to validated
-Two raters check the clause text against the source PDF. Record both in the pull request. Change `status` to `validated`.
+## Check a control against its source
+All controls start as `draft`. If you check one against the source document, open a pull request with the page or section you checked. Once two people have checked it, change `status` to `validated`.
 
 ## Rules
 No patient data in examples. Keep the questionnaire short. Every question must change the plan. Test files go in `tests/`.

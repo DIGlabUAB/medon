@@ -86,7 +86,7 @@
     [1, 2, 3].forEach(k => { h += '<polygon points="' + AX.map((_, i) => pt(i, R * k / 3).join(",")).join(" ") + '" fill="none" stroke="currentColor" stroke-opacity="' + (k === 3 ? .35 : .16) + '"/>'; });
     AX.forEach((a, i) => { const e = pt(i, R); h += '<line x1="0" y1="0" x2="' + e[0] + '" y2="' + e[1] + '" stroke="currentColor" stroke-opacity=".16"/>';
       const l = pt(i, R + 16); h += '<text x="' + l[0] + '" y="' + (l[1] + 3) + '" text-anchor="' + (Math.abs(l[0]) < 6 ? "middle" : l[0] > 0 ? "start" : "end") + '" font-size="9.5" fill="currentColor" fill-opacity=".75" font-family="inherit">' + a.label + "</text>"; });
-    const tc = { low: "#2f8f7a", moderate: "#d9a21b", high: "#c4501a" }[p.tier];
+    const tc = { low: "#2c8a6e", moderate: "#c98a12", high: "#c2462b" }[p.tier];
     h += '<polygon points="' + vals.map((v, i) => pt(i, R * v / 3).join(",")).join(" ") + '" fill="' + tc + '" fill-opacity=".22" stroke="' + tc + '" stroke-width="1.6" stroke-linejoin="round"/>';
     vals.forEach((v, i) => { const q = AX[i].q, pr = p.profile[i], answered = q in A; const c = pt(i, R * v / 3);
       h += '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="3.6" fill="' + (answered && !pr.unsure ? tc : "var(--bg)") + '" stroke="' + tc + '" stroke-width="1.4" ' + (answered ? "" : 'stroke-dasharray="2 2" stroke-opacity=".6"') + "/>"; });

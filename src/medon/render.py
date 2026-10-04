@@ -98,9 +98,7 @@ def render_csv(plan, project=None, org=None, data=None):
     return buf.getvalue()
 
 
-CSS = """:root{--bg:#f6f2ea;--card:#fffdf8;--fg:#17181a;--mut:#6a645a;--line:#ddd5c6;--cu:#d4531a;--lo:#2e8f7a;--mo:#d6a21c;--hi:#c4501a;--done:#2e8f7a;--prog:#d6a21c;--open:#c4501a}
-:root[data-theme=dark]{--bg:#131415;--card:#1c1d20;--fg:#ddd5c8;--mut:#9d9588;--line:#34363a;--cu:#e4672a}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#131415;--card:#1c1d20;--fg:#ddd5c8;--mut:#9d9588;--line:#34363a;--cu:#e4672a}}
+CSS = """:root{--bg:#fff;--card:#fff;--fg:#16191d;--mut:#5d6570;--line:#e3e6ea;--cu:#2456c8;--lo:#2c8a6e;--mo:#c98a12;--hi:#c2462b;--done:#2c8a6e;--prog:#c98a12;--open:#c2462b}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 system-ui,-apple-system,'Segoe UI',sans-serif}
 .pg{max-width:980px;margin:0 auto;padding:22px 18px 40px}.mono{font:11px ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--mut)}
 h1{font-size:22px;margin:4px 0 6px;letter-spacing:-.01em}.top{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
@@ -119,8 +117,7 @@ details.it{background:var(--card);border:1px solid var(--line);border-radius:10p
 @media(max-width:760px){.viz{grid-template-columns:1fr}.mt{display:none}}
 @media print{body{background:#fff;color:#000}details.it{break-inside:avoid}.pg{padding:0}}"""
 FWCOL = ["#2b6cb0", "#c4501a", "#2e8f7a", "#8a5ab5", "#b8860b", "#c0398a", "#4a7a3a", "#607080"]
-THEME_JS = ("<script>(function(){var r=document.documentElement;try{var v=localStorage.getItem('gp-theme');if(v)r.setAttribute('data-theme',v)}catch(e){}"
-            "window.addEventListener('message',function(e){if(e.data&&e.data.medonTheme)r.setAttribute('data-theme',e.data.medonTheme)})})();</script>")
+THEME_JS = ""
 
 
 def _donut(c, total):
